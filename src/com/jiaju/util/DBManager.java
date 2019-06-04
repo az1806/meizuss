@@ -26,7 +26,8 @@ public class DBManager {
 			System.out.println("数据库连接失败！或执行sql失败！");
 			e.printStackTrace();
 		} finally {
-
+ 
+		
 		}
 
 		return 0;

@@ -23,18 +23,32 @@ public class CompanyDaoImpl implements CompanyDao {
 				com.setEmail(rs.getString(7));
 				com.setContact(rs.getString(8));
 				com.setWww(rs.getString("www"));
-				com.setImglone(rs.getString("imglone"));
-				com.setImgltwo(rs.getString("imgltwo"));
-				com.setImglthree(rs.getString("imglthree"));
-				com.setImglfour(rs.getString("imglfour"));
+				
 				com.setImgzong(rs.getString("imgzong"));
 			}
 			System.out.println(com);
+			return com;
+		
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
 		// TODO Auto-generated method stub
-		return com;
+		return null;
+	}
+
+	@Override
+	public int updateCompany(int id, String companyname, String syjs,
+			String gyjs, String culture, String address, String email,
+			String contact, String imgzong, String www) {
+		// TODO Auto-generated method stub
+		int n=DBManager.updateSQL("update companyinfo set companyname='"+companyname+"' ,syjs='"+syjs+"',gyjs='"+gyjs+"',culture='"+culture+"'" +
+						",address='"+address+"',email='"+email+"',contact='"+contact+"'" +
+								",imgzong='"+imgzong+"',www='"+www+"'where companyid="+id);
+		if(n>0){
+			
+			return n;
+		}else{
+		return 0;}
 	}
 	
 }

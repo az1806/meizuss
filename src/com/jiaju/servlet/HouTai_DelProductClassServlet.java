@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jiajiu.dao.ProductClassDao;
+import com.jiajiu.dao.impl.ProductClassDaoImpl;
+
 public class HouTai_DelProductClassServlet extends HttpServlet {
 
 	/**
@@ -23,6 +26,9 @@ public class HouTai_DelProductClassServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		ProductClassDao proclassdao=new ProductClassDaoImpl();
+		
+		
 	System.out.println("已到达DEL这里");
 	}
 

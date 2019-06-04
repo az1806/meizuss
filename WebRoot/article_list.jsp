@@ -45,10 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 
                    for (int i=0;i<nts.size();i++) {
                      %>
-                    <li class="article-on"><a href="article_list_content?typeid=<%=nts.get(i).getTypeid() %>"><%=nts.get(i).getTypename() %></a></li>
+                    <li class="article-on"><a href="article_list?typeid=<%=nts.get(i).getTypeid() %>"><%=nts.get(i).getTypename() %></a></li>
                      <%
                    }
-                   %>
+                   %>     
         <div class="article-more-btn">
             <a href="article_list_more.jsp">MORE &#62; &#62;</a>
         </div>
@@ -62,13 +62,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <%for(int i=0;i<news.size();i++){%>
             <li>
                 <div class="article-date">
-                    <strong><%=news.get(i).getNewsid() %></strong>
+                    <strong><%=i+1 %></strong>
                       <p><%=news.get(i).getTime()%></p>
                 </div>
                 <div class="article-info">
-                    <a href="article_list_content">
+                    <a href="article_list_content?newsid=<%=news.get(i).getNewsid() %>">
                        <h3><%=news.get(i).getTitle() %></h3>
-                        <p><%=news.get(i).getContent() %></p>
+                       
+                        <p><% 
+                        String content=news.get(i).getContent();
+                        if(content.length()>20){
+                        
+                        content.replace(content.substring(20),"......");
+
+                        
+                        
+                        }%>
+                        <%=content %>
+                        
+                        </p>
                     </a>
                 </div>
             </li>
@@ -79,81 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     
     
-        <ul>
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-        </ul>
+        
 
     </section>
 </div>

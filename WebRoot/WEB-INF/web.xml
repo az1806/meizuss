@@ -106,6 +106,153 @@
     <servlet-name>HouTai_ProductlistServlet</servlet-name>
     <servlet-class>com.jiaju.servlet.HouTai_ProductlistServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>HouTai_MessageServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.HouTai_MessageServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Productdetails</servlet-name>
+    <servlet-class>com.jiaju.servlet.Productdetails</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ProductTuiJian</servlet-name>
+    <servlet-class>com.jiaju.servlet.ProductTuiJian</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>IndexRecommedServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.IndexRecommedServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>HouTai_NewslistServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.HouTai_NewslistServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>HouTai_DelNewsTypeServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.HouTai_DelNewsTypeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>HouTai_AddProductlistServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.HouTai_AddProductlistServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>HouTai_MembersServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.HouTai_MembersServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>HouTai_CompanyServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.HouTai_CompanyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>HouTai_AddMembersServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.HouTai_AddMembersServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.ProductServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ProductTypeAdmin</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.ProductTypeAdmin</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>NewsTypeServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.NewsTypeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ProductAdminServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.ProductAdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MemberAdminServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.MemberAdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>NewsServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.NewsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>NewslistServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.NewslistServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>NewssServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.NewssServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CompanyAdminServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.CompanyAdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MessageAdminServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.admin.MessageAdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>FrameServlet</servlet-name>
+    <servlet-class>com.jiaju.servlet.FrameServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -171,11 +318,7 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>MemberhServlet</servlet-name>
-    <url-pattern>/memberh</url-pattern>
-
-  </servlet-mapping>
+ 
   <servlet-mapping>
     <servlet-name>HouTai_ProductClassServlet</servlet-name>
     <url-pattern>/houtaiproductclass</url-pattern>
@@ -191,8 +334,91 @@
   <servlet-mapping>
     <servlet-name>HouTai_ProductlistServlet</servlet-name>
     <url-pattern>/houtaiproductlist</url-pattern>
-  </servlet-mapping>	
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HouTai_MessageServlet</servlet-name>
+    <url-pattern>/houtaimessage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Productdetails</servlet-name>
+    <url-pattern>/productdetails</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProductTuiJian</servlet-name>
+    <url-pattern>/producttuijian</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IndexRecommedServlet</servlet-name>
+    <url-pattern>/indexrecommed</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HouTai_NewslistServlet</servlet-name>
+    <url-pattern>/houtainewslist</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HouTai_DelNewsTypeServlet</servlet-name>
+    <url-pattern>/houtaidelnewstype</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet-mapping>
+    <servlet-name>HouTai_AddProductlistServlet</servlet-name>
+    <url-pattern>/houtaiaddproduct</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HouTai_MembersServlet</servlet-name>
+    <url-pattern>/houtaimembers</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HouTai_CompanyServlet</servlet-name>
+    <url-pattern>/houtaicompany</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HouTai_AddMembersServlet</servlet-name>
+    <url-pattern>/houtaiaddmembers</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProductTypeAdmin</servlet-name>
+    <url-pattern>/adminproducttype</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NewsTypeServlet</servlet-name>
+    <url-pattern>/adminnewstype</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProductAdminServlet</servlet-name>
+    <url-pattern>/adminproduct</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MemberAdminServlet</servlet-name>
+    <url-pattern>/adminmember</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NewsServlet</servlet-name>
+    <url-pattern>/adminnews</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NewslistServlet</servlet-name>
+    <url-pattern>/adminnewslist</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NewssServlet</servlet-name>
+    <url-pattern>/adminnewss</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CompanyAdminServlet</servlet-name>
+    <url-pattern>/admincompany</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MessageAdminServlet</servlet-name>
+    <url-pattern>/adminmessage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FrameServlet</servlet-name>
+    <url-pattern>/frame</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>/frame.html</welcome-file>
   </welcome-file-list>
 </web-app>

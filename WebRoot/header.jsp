@@ -4,6 +4,9 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+			
+			List<Banners> banlist=(ArrayList<Banners>) request.getAttribute("banlist");
+			     
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -58,7 +61,7 @@
             <li><a href="contact" name="message">联系我们</a>
                 <div class="secondary-menu">
 
-                    <ul><li><a href="message" class="message"></a></li></ul>
+                    <ul><li><a href="message.jsp" class="message"></a></li></ul>
                 </div>
             </li>
         </ul>
@@ -71,13 +74,17 @@
         
     </div>
 <div class="am-slider am-slider-default" data-am-flexslider="{playAfterPaused: 8000}">
+ 
     <ul class="am-slides">
+  
+   <%for(int i=0;i<banlist.size();i++){ %>
+     
+        <li><img src=<%=banlist.get(i).getBanner() %> alt="" ></li>
    
-        <li><img src=<%=com.getImglone() %> alt="" ></li>
-        <li><img src=<%=com.getImgltwo() %> alt="" ></li>
-        <li><img src=<%=com.getImglthree() %> alt="" ></li>
-        <li><img src=<%=com.getImglfour() %> alt="" ></li>
+        <%} %>
+        
     </ul>
+    
 </div>
 </header>
   </body>

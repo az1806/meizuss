@@ -22,30 +22,38 @@ public class MessageServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setCharacterEncoding("utf-8");
-		request.setCharacterEncoding("utf-8");
+		
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=utf-8");
+		
 		Integer lyid=null;
+		
 		String usernamez=request.getParameter("username");
 		String phonez=request.getParameter("tel");
 		String emailz=request.getParameter("email");
 		String contentz=request.getParameter("content");
 		PrintWriter out=response.getWriter();
+		
 		MessageDao msdo=new MessageDaoImpl();
+		
+		
+		
 	 boolean ly=msdo.insertMess(lyid, usernamez, phonez, emailz, contentz);
 	 if(ly==true){
 		 System.out.println("¡Ù—‘≤Â»Î≥…π¶");
-		 out.println("<script>  alert('¡Ù—‘≥…π¶!');"+"location.herf='message.jsp'; </script>");
+		 out.println("<script>  alert('¡Ù—‘≥…π¶!');"+"location.href='message.jsp'; </script>");
 		 
 		 
 	 }else{
-		 out.println("<script>  alert('¡Ù—‘ ß∞‹!');"+"location.herf='message.jsp'; </script>");
+		 out.println("<script>  alert('¡Ù—‘ ß∞‹!');"+"location.href='message.jsp'; </script>");
 		 
 		 
 	 }
 	 
 		System.out.println("¡Ù—‘º”»Î≥…π¶");
 		
-		request.getRequestDispatcher("message.jsp").forward(request, response);
+		
 		
 	}
 

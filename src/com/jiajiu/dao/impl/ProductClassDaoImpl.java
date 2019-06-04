@@ -30,4 +30,35 @@ public class ProductClassDaoImpl implements ProductClassDao {
 		return pts;
 	}
 
+	@Override
+	public boolean addProductType(String typename) {
+		// TODO Auto-generated method stub
+		int n=DBManager.updateSQL("insert  into  productclassinfo (typename) values('"+typename+"')");
+		if(n==1){		
+			System.out.println("产品类别加入成功");	
+			return true;
+		}else{		
+			System.out.println("产品类别加入失败喽");			
+		}
+		return false;
+	}
+
+	@Override
+	public boolean delProductType(int type) {
+		// TODO Auto-generated method stub
+		
+	int n=DBManager.updateSQL("delete from productclassinfo where typeid="+type)	;
+		
+	if(n==1){
+		System.out.println("哎呀，该类别被你删啦，不要后悔哦");
+		return true;
+	}else{
+		System.out.println("哈哈，想把我删掉 ，在检查 检查代码吧");
+		return false;
+	}
+	
+	
+	}
+	
+
 }

@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" import="java.util.*,com.jiaju.entity.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -45,13 +45,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li><a><input type="text"  class="pro-search"><a class="pro-search-btn">搜索</a></a></li>
                 </ul>
             </li>
+            
+            
+            
             <li>
                 <a>产品分类</a>
+                
                 <ul id="pro-category">
-                    <li class="on"><a href="#">椅子系列</a></li>
-                    <li><a href="#">餐桌系列</a></li>
-                    <li><a href="#">沙发系列</a></li>
-                    <li><a href="#">创意系列</a></li>
+                   <%    List<ProductClass> pts = ( List<ProductClass> ) request.getAttribute("productclass");
+                
+                   for (int i=0;i<pts.size();i++) {
+                     %>
+                     <li class="on"><a href="/jiaju/productlist?typeid=<%=pts.get(i).getTypeid() %>"><%=pts.get(i).getTypename() %></a></li>
+                     <%
+                   }
+                   %>
+                   
                 </ul>
             </li>
         </ul>
@@ -70,31 +79,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="pro-detalis-carousel">
                     <div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth: 112, itemMargin: 4,move:5,  controlNav: false ,  slideshow: true}">
                         <ul class="am-slides pro-details">
-                            <li><img src="images/procarousel.png" /></li>
+                        <%List<Product> prolist=(ArrayList<Product>) request.getAttribute("plistwucan") ; 
+                           
+                 
+                              int cpid=Integer.parseInt(request.getParameter("cpid"));
+                              
+                         
+                
+               %>
+              
+                            <li>    <img src="<%=prolist.get(cpid-1).getImg() %>" /></li>
                             <li><img src="images/team1.png" /></li>
                             <li><img src="images/team2.png" /></li>
                             <li><img src="images/team3.png" /></li>
                             <li><img src="images/team4.png" /></li>
                             <li><img src="images/procarousel.png" /></li>
                             <li><img src="images/procarousel.png" /></li>
+                            
+                            
+                            
                         </ul>
                     </div>
                 </div>
+                
+                
 				
             </div>
             <div class="pro-right-right">
                 <ul class="pro-right-info-constant">
-                    <li>产品名称:</li>
-                    <li>产品材质:</li>
+                    <li>  产品名称:</li>
+                    <li>产品功能:</li>
                     <li>产品售价:</li>
-                    <li>市场价:</li>
+                    <li>详细说明</li>
                 </ul>
+                
+                
                 <ul class="pro-right-info-variable">
-                    <li>软皮椅</li>
-                    <li>真皮</li>
-                    <li>$260.00</li>
-                    <li>$280.00</li>
+                    <li><%=cpid %>   <%=prolist.get(cpid-1).getName() %></li>
+                    <li><%=prolist.get(cpid-1).getFunction() %></li>
+                    <li><%=prolist.get(cpid-1).getPrice() %></li>
+                    <li><%=prolist.get(cpid-1).getContent() %></li>
+                    
+                    
+                    
+                    
                 </ul>
+                
+                
+                
             </div>
 
             <div class="am-tabs pro-tabs" data-am-tabs>

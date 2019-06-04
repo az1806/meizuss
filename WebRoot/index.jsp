@@ -2,6 +2,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+List<News> newslist=(List<News>) request.getAttribute("newslist");
 %>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -62,15 +63,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </section>
 
+
 <section class="index-product">
-    <main>
+<section class="index-product">
+<main>
         <ul>
-            <li class="index-active"><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
+<% List<ProductClass> ptclass=(ArrayList<ProductClass>) request.getAttribute("pts")  ;
+ 
+ for(int i=0;i<ptclass.size();i++){
+
+  %>
+    
+            <li class="index-active"><a href="index?typeid=<%=ptclass.get(i).getTypeid()  %>"> <%=ptclass.get(i).getTypename() %>   </a></li>
+          
+            
+            <%} %>
+            
         </ul>
     </main>
+    
+    
     <main></main>
     <main></main>
 </section>
@@ -80,41 +92,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <span></span>
         <a href="#">MORE &#62; &#62;</a>
     </div>
-    <div class="index-content">
-        <div class="product-list">
-            <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
-                <a href="product_info.html">
-                    <img src="images/product1.png" />
+    
+    
+   
+   <div class="index-content">
+     
+     
+   
+  
+     <div class="product-list">
+    
+  <% List<Product> plist=(ArrayList<Product>) request.getAttribute("plist") ;
+  
+  
+  for(int i=0;i<6;i++){
+  
+  %>
+              <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
+                     <a href="productdetails?cpid=<%=plist.get(i).getCpid() %>">
+              
+                    <img src="<%=plist.get(i).getImg() %>" />
                 </a>
             </div>
-            <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
-                <a href="product_info.html">
-                    <img src="images/product2.png" />
-                </a>
-            </div>
-            <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
-                <a href="product_info.html">
-                    <img src="images/product3.png" />
-                </a>
-            </div>
-            <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
-                <a href="product_info.html">
-                    <img src="images/product1.png" />
-                </a>
-            </div>
-            <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
-                <a href="product_info.html">
-                    <img src="images/product2.png" />
-                </a>
-            </div>
-            <div class="am-u-sm-6 am-u-md-6 am-u-lg-4">
-                <a href="product_info.html">
-                    <img src="images/product3.png" />
-                </a>
-            </div>
+            
+              <%} %>
+            
         </div>
-    </div>
+        
+    </div>  
 </section>
+    <main></main>
+    <main></main>
+</section>
+
 
 
 <section class="index-margin-bottom">
@@ -127,32 +137,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         <div class="new-index">
             <ul>
+           
                 <li><img  src="images/productlogo.png" alt=""> </li>
-                <li>  <a href="article_list_content"><h3>怎么搭配茶几与沙发?</h3>
-                    <article>在现代居住空间里面，有沙发的地方似乎总也少不了
-                        茶几的身影。尤其在现代客厅里，一款实用、时尚的</article></a></li>
+                
+                <li>  <a href="article_list_content"><h3><%=newslist.get(3).getTitle() %></h3>
+                    <article>
+                    <%=newslist.get(3).getContent() %>
+                       </article></a></li>
+                        
+                        
             </ul>
+            
             <ul>
-                <li><a href="article_list_content"><h3>家具有哪些类型?</h3>
-                    <article>按家具从风格上可以分为：现代家具、欧式古典家具、
-                        美式家具、中式古典家具（也就是红木家具），还有
+           <% for(int i=4;i<8;i++){ %>
+             
+                <li><a href="/jiaju/article_list_content?newsid=<%=newslist.get(i).getNewsid() %>"><h3><%=newslist.get(i).getTitle() %>   </h3>
+                    <article>
+                    <%=newslist.get(i).getContent() %>
                     </article>
                 </a></li>
-                <li><a href="article_list_content"><h3>实木家具需保养防开裂</h3>
-                    <article>实木家具越来越受人们的欢迎，有很多业主在装修时
-                        都选择实木家具。但是他们购买之后不对它进行保养
-                    </article></a>
-                </li>
-                <li><a href="article_list_content"><h3>卧室如何选择合适的衣橱家具色彩</h3>
-                    <article>要选择合适的家具色彩，首先要符合个人爱好，又要
-                        注意与房间的大小、室内光线的明暗相结合，并且要
-                    </article></a>
-                </li>
-                <li><a href="article_list_content"><h3>韩派办公家具制作工艺过程</h3>
-                    <article>苏州韩派办公家具制作工艺过程，品牌办公家具厂家
-                        都具有一整套生产流程，通过对工艺流程的规范以及
-                    </article></a>
-                </li>
+                
+                <%} %>
+                
             </ul>
 
         </div>

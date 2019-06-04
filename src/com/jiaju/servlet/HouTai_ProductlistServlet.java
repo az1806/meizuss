@@ -32,8 +32,7 @@ public class HouTai_ProductlistServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HouTai_ProductlistDao htpldao=new HouTai_ProductlistDaoImpl();
-		List<Product> prolists=new ArrayList<Product>();
-		
+		List<Product> prolists=new ArrayList<Product>();		
 		prolists=htpldao.queryProduct();
 		request.setAttribute("houtaiproductlist", prolists);
 		request.getRequestDispatcher("/tgls/goodsManage/goods_list.jsp").forward(request, response);

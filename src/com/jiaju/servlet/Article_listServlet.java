@@ -38,12 +38,35 @@ public class Article_listServlet extends HttpServlet {
 		}
 
 
+/**
+ * 带参数可以分类的新闻列表		
+ */
+		
 NewsDao newsdao=new NewsDaoImpl();
-List<News> newslist=newsdao.queryNewsDao(typeid);
-       
+List<News> newslist=newsdao.queryNewsDao(typeid);       
 request.setAttribute("newslist",newslist);
+
+/**
+ * 不带参数显示新闻内容的列表
+ */
+
+int newsid;
+if(request.getParameter("newsid")!=null){
+	
+	newsid=Integer.parseInt(request.getParameter("newsid"));
+	
+}
+
+NewsDao newsdaowucan=new NewsDaoImpl();
+List<News> newslistwucan=newsdaowucan.queryNewsDaowucan();       
+request.setAttribute("newslistwucan",newslistwucan);
+
 		request.setAttribute("newstype",nts);
 		System.out.println("数据加载完成");	
+		
+		
+		
+		
 		request.getRequestDispatcher("article_list.jsp").forward(request, response);
 	}
 

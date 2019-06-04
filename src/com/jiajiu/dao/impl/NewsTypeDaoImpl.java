@@ -9,6 +9,8 @@ import java.util.List;
 
 import com.jiajiu.dao.NewsTypeDao;
 import com.jiaju.entity.NewsType;
+import com.jiaju.util.DBManager;
+import com.mysql.jdbc.Statement;
 
 
 
@@ -34,12 +36,36 @@ public class NewsTypeDaoImpl implements NewsTypeDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
 		return nts;
 	
 		
 	
 }
+
+	@Override
+	public boolean delNewsType(int typeid) {
+    int n=DBManager.updateSQL("delete from newstypeinfo where typeid="+typeid);
+if(n==1){
+System.out.println("该类别删除成功");
+	return true;
+}else{
+	System.out.println("该类别删除失败");
+	return false;
+}
+	}
+
+	@Override
+	public boolean addNewsType(String typename) {
+	int n=DBManager.updateSQL("insert into newstypeinfo (typename) values('"+typename+"')");
+	if(n==1){
+		System.out.println("哈呀，加上了一个类别啊");
+		return true;
+	}
+	System.out.println("怎么说，没把我加上吧");
+		return false;
+	}
 
 		
 }	

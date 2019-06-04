@@ -2,14 +2,18 @@ package com.jiaju.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jiajiu.dao.BannersDao;
 import com.jiajiu.dao.CompanyDao;
+import com.jiajiu.dao.impl.BannersDaoImpl;
 import com.jiajiu.dao.impl.CompanyDaoImpl;
+import com.jiaju.entity.Banners;
 import com.jiaju.entity.Company;
 
 public class HeaderServlet extends HttpServlet {
@@ -20,6 +24,16 @@ public class HeaderServlet extends HttpServlet {
 		CompanyDao comDao = new CompanyDaoImpl();
 		Company com = comDao.queryCompany();
 		request.setAttribute("company", com);
+		/**
+		  * »ñÈ¡ÂÖ²¥Í¼
+		  */
+		 
+		 BannersDao bandao=new BannersDaoImpl();
+		 
+		 List<Banners> banlist=bandao.queryBanners();
+		 
+		 
+		 request.setAttribute("banlist",banlist);
 		request.getRequestDispatcher("header.jsp").include(request, response);
 	}
 

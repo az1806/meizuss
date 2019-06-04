@@ -21,31 +21,60 @@ public class ProductlistServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		
 		 ProductClassDao pcd=new ProductClassDaoImpl();		
 		   List<ProductClass> pts=pcd.queryProductClass();
-		
-		   
+			 request.setAttribute("productclass",pts);
+	
 		   int typeid;
 		   if(request.getParameter("typeid")==null){
-			   typeid=pts.get(0).getTypeid();
-			   
+			   typeid=pts.get(0).getTypeid();		 
 		   }else{
+			   
 			   typeid=Integer.parseInt(request.getParameter("typeid"));
 			   
 		   }
-		
+	   
+		/**
+		 * 根据产品类别进行显示;
+		 */
 		
          ProductlistDao productdao=new ProductlistDaoImpl();
         List<Product> plist=productdao.queryProduct(typeid);
-        
         request.setAttribute("plist",plist);
-		 request.setAttribute("productclass",pts);
+        
+        
+        int cpid;
+        if(request.getParameter("cpid")!=null){
+  		   
+      	  cpid=Integer.parseInt(request.getParameter("cpid"));
+      	  
+  	   }	
+        
+        /**
+         * 根据搜索内容进行显示
+         **/ 
+        
+        
+        ProductlistDao prosear=new ProductlistDaoImpl();
+	       String name=request.getParameter("name"); 
+	       List<Product> names=prosear.queryProductSearch(name);   
+	       request.setAttribute("names",names);
+      
+	
+		
+		 
 		request.getRequestDispatcher("productlist.jsp").forward(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 	}
 

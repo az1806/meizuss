@@ -55,26 +55,30 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html");
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=utf-8");
 String name=request.getParameter("name");
 String pwd=request.getParameter("password");
 
 ManagementDao Mado=new ManagementDaoImpl();
 Management mage=(Management)Mado.selectMageByBame(name);
+PrintWriter out=response.getWriter();
 
 if(mage!=null&&mage.getPwd().equals(pwd)){
 	
-	request.getRequestDispatcher("frame.html").forward(request, response);
+//	request.getRequestDispatcher("frame").forward(request, response);
+	response.sendRedirect("frame");
 	
 	
 }else{
-	response.sendRedirect("zhuce.html");
+	 out.println("<script>  alert('µÇÂ¼Ê§°Ü!');"+"location.href='login.html'; </script>");
 }
 
-		
-		
-		
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+	    
 		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
 		out.println("<HTML>");
 		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");

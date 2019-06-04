@@ -219,60 +219,13 @@ function updateBut() {
 			//此功能只适用与提前加载后，进行搜索；
 
 			//新增
-			function addCustomList(id){
-				var str = '<tr>'+
-				              '<td>'+
-							    '<input type="tel" name="phone" lay-verify="required" autocomplete="off" class="layui-input">'+
-							'</td>'+
-							'<td>'+
-							    '<input type="tel" name="phone" lay-verify="required" autocomplete="off" class="layui-input">'+
-							'</td>'+
-							'<td>'+
-							    '<input type="tel" name="phone" lay-verify="required" autocomplete="off" class="layui-input">'+
-							'</td>'+
-							'<td>'+
-							    '<input type="tel" name="phone" lay-verify="required" autocomplete="off" class="layui-input">'+
-							'</td>'+
-							'<td>'+
-							    '<input type="tel" name="phone" lay-verify="required" autocomplete="off" class="layui-input">'+
-							'</td>'+
-							
-							'<td>'+
-								'<a class="layui-btn layui-btn-xs" onclick="delCustomList(this)">删除</a>'+
-							'</td>'+
-						'</tr>';
-				$("#"+id).append(str);
-				
-				layui.use(['form','laydate'], function() {
-					var form = layui.form;
-					form.render();
-				});
-				//重新初始化Iframe的高度
-				cframeInit();
-			}
 			
 			//删除
-			function delCustomList(_this){
-				layui.use(['form','laydate'], function() {
-					layer.confirm('确定要删除么？', {
-						btn: ['确定', '取消'] //按钮
-					}, function() {
-						$(_this).parent().parent().remove();
-						layer.msg('删除成功', {
-							icon: 1
-						});
-					}, function() {
-						layer.msg('取消删除', {
-							time: 2000 //20s后自动关闭
-						});
-					});
-				});
-			}
-
+			
 		</script>
 	</body>
 
 
 
-	</body>
+	
 

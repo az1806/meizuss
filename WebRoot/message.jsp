@@ -69,7 +69,7 @@ return true;
 </script>
 
 
-   <form class="message-form" method="post" action="message" onsubmit="return checkForm(this)">
+   <form class="message-form" method="post" action="message" accept-charset="UTF-8"      onsubmit="return checkForm(this)">
 
        <label>姓名
            <input type="text" name="username">

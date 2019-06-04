@@ -66,13 +66,13 @@
 			</div>
 		</div>
 		<script>
-			layui.use('form', function() {
+		/*	layui.use('form', function() {
 				var form = layui.form;
 				//监听提交
 				form.on('submit(loginBut)', function(data) {
 					layer.msg(JSON.stringify(data.field));
 					return true;
-				});
+				}); */
 				//监听用户类型，改变风格
 				form.on('radio(userType)', function(data){
 					if(data.value == "管理员"){
@@ -88,7 +88,7 @@
 						$(".login_but").css("cssText", "background-color:#ffd205 !important");
 					}
 				});
-			});
+			
 		</script>
 	</body>
 

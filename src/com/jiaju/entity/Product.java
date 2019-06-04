@@ -53,6 +53,7 @@ public class Product {
 	public Product(){
 		
 	}
+	
 	public Product(int cpid,int typeid,String name,String function,Double price,String img,String content){
 		this.cpid=cpid;
 		this.typeid=typeid;

@@ -7,6 +7,5 @@ import com.jiaju.entity.Product;
 public interface HouTai_ProductlistDao {
 
 	List<Product> queryProduct();
-	
-	
+
 }

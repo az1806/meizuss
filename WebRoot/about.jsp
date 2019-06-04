@@ -38,6 +38,26 @@
 <script type="text/javascript" src="js/main.min.js?t=1"></script>
 </head>
 <body>
+<style>
+
+#member{
+
+
+display:inline-block;
+position:relative;
+left:370px;
+top:20px
+
+
+
+}
+
+#img{
+width:200px;
+height:200px;
+}
+
+</style>
 	<jsp:include page="/header"></jsp:include>
 	
 
@@ -74,39 +94,46 @@
 			</div>
 		</div>
 
-		 <div class="about-team">
+		 <div id="member" >
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
             <p >设计团队</p>
             <span>DESIGN TEAM</span>
         </div>
-        <div class="about-team-headimg">
+        
+           <%List <Member> memlist=(ArrayList<Member> ) request.getAttribute("mems");
+        
+        for(int i=0;i<memlist.size();i++){   %>
+        
+         <div class="about-team-headimg" >
         <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-            <img src="images/team1.png" alt="">
-            <p>史密斯KIM</p>
-            <span>首席金牌设计师</span>
+            <img src="<%=memlist.get(i).getPhoto() %>" alt="" id="img">
+            <p><%=memlist.get(i).getName() %></p>
+            <span><%=memlist.get(i).getPosition() %></span>
         </div>
-        <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-            <img src="images/team2.png" alt="">
-            <p>刘凯丽</p>
-            <span>首席金牌设计师</span>
+        
+    <%    }
+        
+        
+        
+         %>
+        
         </div>
-        <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-            <img src="images/team3.png" alt="">
-            <p>小李子</p>
-            <span>首席金牌设计师</span>
         </div>
-        <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+       
+        
+   <!--     <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
             <img src="images/team4.png" alt="">
             <p>Lisa</p>
             <span>首席金牌设计师</span>
         </div>
-        </div>
+        --> 
+        
         <div class="about-slogan">
             <div>
             <p></p>
             </div>
         </div>
-    </div>
+    
 
 	</section>
 	<jsp:include page="/foot"></jsp:include>

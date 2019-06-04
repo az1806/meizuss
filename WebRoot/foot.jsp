@@ -42,15 +42,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="footer-box">
                     <i class="icon-email"></i>
                     <span>公司邮箱:</span>
-                    <span><strong> <% Company con = (Company) request.getAttribute("company"); %>
-					<%=con.getEmail()%> 
+                    <span><strong> 
+					<%=com.getEmail()%> 
 			</strong></span>
                 </div>
                 <div class="footer-box">
                     <i class="icon-address"></i>
                     <span>公司地址:</span>
-                    <span><strong> <% Company comn = (Company) request.getAttribute("company"); %>
-					<%=comn.getAddress()%> 
+                    <span><strong>
+					<%=com.getAddress()%> 
 			</strong></span>
                 </div>
                </div>

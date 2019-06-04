@@ -32,7 +32,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="lib/amazeui/amazeui.min.js"></script>
 <script type="text/javascript" src="lib/raty/jquery.raty.js"></script>
 <script type="text/javascript" src="js/main.min.js?t=1"></script>
-</head>
+
+<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script></head>
+
 <body>
 <jsp:include page="/header"></jsp:include>
 
@@ -42,13 +47,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <ul>
             <li>
                 <a>产品搜索</a>
+                 <form action="productlist" method="get">
                 <ul id="pro-search">
-                    <li><a><input type="text"  class="pro-search"><a class="pro-search-btn">搜索</a></a></li>
+                    <li><a><input type="text"  class="pro-search"  name="name" id="search"></li>
                 </ul>
+               
+              
+                <input type="submit" value="搜索" class="pro-search-btn" style="color:white;font-size: 18px;"> 
+                </form>
             </li>
+            
              <li>
                 <a>产品分类</a>
                  <ul id="pro-category">
+                 
+                 
                    <%    List<ProductClass> pts = ( List<ProductClass> ) request.getAttribute("productclass");
                 
                    for (int i=0;i<pts.size();i++) {
@@ -58,6 +71,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    }
                    %>
                    
+                   
+                   
                 </ul>
             </li>
         </ul>
@@ -66,12 +81,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <aside class="pro-rightsidebar">
        
         <ul>
+      
+      
+      <script> </script>
         
-        <%List<Product> plist=(List<Product>)request.getAttribute("plist"); 
-        for(int i=0;i<plist.size();i++){%>
+ <%    if(request.getParameter("name")!=null){      
+         List<Product> psearch=(List<Product>)request.getAttribute("names"); 
+       
+        for(int i=0;i<psearch.size();i++){%>      
+          <li >
+              <a href="productdetails?cpid=<%=psearch.get(i).getCpid() %>">
+                <div class="img-box">
+              
+                    <img src="<%=psearch.get(i).getImg() %>">
+                    <p><%=psearch.get(i).getName() %></p>
+                 
+                </div>
+                </a>
+            </li>
+    <% }}else{  %>
+        
+        
+        
+    <%      List<Product> plist=(List<Product>)request.getAttribute("plist"); 
+
+
+  
+       
+     for(int i=0;i<plist.size();i++){%>
         
           <li >
-              <a href="productdetails.jsp">
+              <a href="productdetails?cpid=<%=plist.get(i).getCpid() %>">
                 <div class="img-box">
               
                     <img src="<%=plist.get(i).getImg() %>">
@@ -81,18 +121,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </a>
             </li>
         
+       
         
-      <%  }  %>
+        <%}
+        } %>
+    
+       
+        
+        
+       
+      
+      
+      
+      
+      
          </ul>
-        
-        
-       
-  
-        
-   
-            
 
-       
 		<!--
         <div class="pro_list_more_pages">
             <ul>

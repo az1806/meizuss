@@ -25,17 +25,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>穷在闹市出品</title>
 
 		<!-- 公共样式 开始 -->
-		<link rel="stylesheet" type="text/css" href="../../css/base.css">
-		<link rel="stylesheet" type="text/css" href="../../css/iconfont.css">
-		<script type="text/javascript" src="../../framework/jquery-1.11.3.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
-		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		
+		<link rel="stylesheet" type="text/css" href="iconfont.css">
+		
+		<script type="text/javascript" src="framework/jquery-1.11.3.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+		
+		<script type="text/javascript" src="layui/layui.js"></script>
+		
 		<!-- 滚动条插件 -->
-		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.css">
-		<script src="../../framework/jquery-ui-1.10.4.min.js"></script>
-		<script src="../../framework/jquery.mousewheel.min.js"></script>
-		<script src="../../framework/jquery.mCustomScrollbar.min.js"></script>
-		<script src="../../framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css">
+		
+		<script src="framework/jquery-ui-1.10.4.min.js"></script>
+		
+		<script src="framework/jquery.mousewheel.min.js"></script>
+		
+		<script src="framework/jquery.mCustomScrollbar.min.js"></script>
+		
+		<script src="framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
 		<!-- 公共样式 结束 -->
 <meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -45,7 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	</head>
+
+	
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     
    
     
@@ -61,6 +72,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</form>
 
 				<script>
+				
+		    
+				
+				function add() {
+	
+		var typename = document.getElementById("typename").value;
+if(typename==""){
+alert("输入框不能为空");
+
+}else{
+   window.location.href="adminnewstype?method=add&typename="+typename;
+}
+     
+		
+	
+			
+	}
+	
+
+	/*  function del(e) {
+   var typeid=e.getAttribute("data-id");
+     var typename=e.getAttribute("data-name");
+   var a=confirm("你确定要删除"+typename+"这个类别嘛");
+   if(a){
+   window.location.href="adminnewstype?method=del&typeid="+typeid;
+   }else{
+   
+   alert("删除失败");
+   }
+   
+   
+
+	}		 */
+				
+				
 					layui.use('form', function() {
 						var form = layui.form;
 				
@@ -84,6 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</thead>
 				<tbody>
+				<form>
 				 <%    List<NewsType> nts = ( List<NewsType> ) request.getAttribute("hnewstype");
                 
                    for (int i=0;i<nts.size();i++) {
@@ -92,23 +139,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td><%=nts.get(i).getTypeid() %></td>
 						<td><%=nts.get(i).getTypename() %></td>
 						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs">删除</button>
+						
+						
+							<a  class="layui-btn layui-btn-xs"  href="adminnewstype?method=del&typeid=<%=nts.get(i).getTypeid()  %>" onclick="return confirm('你确定要删除嘛')">删除 </a>
 						</td>
 					</tr>
-                     
-                     
-                  
+   
                      <%
                    }
                    %>		
-				
+				</form>
 				
 				
 				
 					
 				</tbody>
+				
+				
 			</table>
+			<form>
+			<table>
+
+				<tr>
+
+					<td>请输入新闻类别名称</td>
+					<td><input id="typename" name="typename">
+					</td>
+				</tr>
+				<tr>
+					<td><input type="button" onclick="add()" value="确定添加" /></td>
+				</tr>
+
+			</table>
+
+		</form>
 			
 			<!-- layUI 分页模块 -->
 			
