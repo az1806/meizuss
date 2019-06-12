@@ -2,6 +2,9 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+Product products=(Product) request.getAttribute("products");
+
+
 %>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -34,6 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/main.min.js?t=1"></script>
 </head>
 <body>
+
 <jsp:include page="/header"></jsp:include>
 
 <section class="pro-list">
@@ -79,16 +83,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="pro-detalis-carousel">
                     <div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth: 112, itemMargin: 4,move:5,  controlNav: false ,  slideshow: true}">
                         <ul class="am-slides pro-details">
-                        <%List<Product> prolist=(ArrayList<Product>) request.getAttribute("plistwucan") ; 
-                           
-                 
-                              int cpid=Integer.parseInt(request.getParameter("cpid"));
-                              
-                         
-                
-               %>
+                      
               
-                            <li>    <img src="<%=prolist.get(cpid-1).getImg() %>" /></li>
+                            <li>    <img src="<%=products.getImg() %>" /></li>
                             <li><img src="images/team1.png" /></li>
                             <li><img src="images/team2.png" /></li>
                             <li><img src="images/team3.png" /></li>
@@ -115,10 +112,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 
                 
                 <ul class="pro-right-info-variable">
-                    <li><%=cpid %>   <%=prolist.get(cpid-1).getName() %></li>
-                    <li><%=prolist.get(cpid-1).getFunction() %></li>
-                    <li><%=prolist.get(cpid-1).getPrice() %></li>
-                    <li><%=prolist.get(cpid-1).getContent() %></li>
+                    <li>   <%=products.getName() %></li>
+                    <li><%=products.getFunction() %></li>
+                    <li><%=products.getPrice() %></li>
+                    <li><%=products.getContent() %></li>
                     
                     
                     

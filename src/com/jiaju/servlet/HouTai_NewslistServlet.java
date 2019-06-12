@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jiajiu.dao.NewsDao;
 import com.jiajiu.dao.impl.NewsDaoImpl;
@@ -33,8 +34,11 @@ public class HouTai_NewslistServlet extends HttpServlet {
 		NewsDao newsdaowucan=new NewsDaoImpl();
 		List<News> newslist=newsdaowucan.queryNewsDaowucan();       
 		request.setAttribute("newslist",newslist);
-		request.getRequestDispatcher("tgls/newsManage/newslist.jsp").forward(request, response);
 		
+		HttpSession session=request.getSession();
+	
+			request.getRequestDispatcher("tgls/newsManage/newslist.jsp").forward(request, response);
+	
 	}
 
 	/**

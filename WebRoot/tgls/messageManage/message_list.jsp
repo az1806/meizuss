@@ -84,6 +84,7 @@ window.location.href="adminmessage?method=search&searchstate="+searchstate+"";
 				<form class="layui-form" action="">
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
+						
 							<input type="text" id="state" required lay-verify="required"  autocomplete="off" class="layui-input">
 						</div>
 						
@@ -126,7 +127,7 @@ window.location.href="adminmessage?method=search&searchstate="+searchstate+"";
 				
 				
 				<tr>
-						<td><%=Searlist.get(i).getLyid() %></td>
+						<td><%=i+1 %></td>
 						<td><%=Searlist.get(i).getName() %></td>
 					
 						

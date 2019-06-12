@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div>
         <div class="footer-info">
             <div class="footer-content">
-                <img src="images/qccode.png" alt="">
+                <img src="images/meizu2.jpg" alt="">
                <div>
                
                 <div class="footer-box">
@@ -59,8 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <style>
         .footer-bottom a{color:#F1404B}
         </style>
-        <div class="footer-bottom"><div style="text-align:center;color:#fff;line-height:100px;"><span><a href="http://www.haothemes.com/" target="_blank" title="好主题">好主题</a>提供 - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></span></div></div>
-    </div>
+       
 </footer>
   </body>
 </html>

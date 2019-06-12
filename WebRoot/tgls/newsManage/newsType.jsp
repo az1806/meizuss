@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</form>
 
-				<script>
+				<script type="text/javascript">
 				
 		    
 				
@@ -83,6 +83,7 @@ alert("输入框不能为空");
 
 }else{
    window.location.href="adminnewstype?method=add&typename="+typename;
+   
 }
      
 		
@@ -90,21 +91,34 @@ alert("输入框不能为空");
 			
 	}
 	
+	
+	
+	
 
-	/*  function del(e) {
-   var typeid=e.getAttribute("data-id");
-     var typename=e.getAttribute("data-name");
-   var a=confirm("你确定要删除"+typename+"这个类别嘛");
-   if(a){
-   window.location.href="adminnewstype?method=del&typeid="+typeid;
-   }else{
-   
-   alert("删除失败");
-   }
-   
-   
 
-	}		 */
+	//修改按钮
+	
+				var updateFrame = null;
+				function updateBut(e) {
+				  var typeid=e.getAttribute("data-id");
+				 
+					layui.use('layer', function() {
+						var layer = layui.layer;
+
+						//iframe层-父子操作
+						updateFrame = layer.open({
+							title : "新闻类别修改",
+							type : 2,
+							area : [ '70%', '60%' ],
+							scrollbar : false, //默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
+							maxmin : true,
+							content :'adminnewstype?method=zhezhao&typeid='+typeid
+						});
+					});
+
+				}
+
+
 				
 				
 					layui.use('form', function() {
@@ -136,12 +150,13 @@ alert("输入框不能为空");
                    for (int i=0;i<nts.size();i++) {
                      %>
                      <tr>
-						<td><%=nts.get(i).getTypeid() %></td>
+						<td><%=i+1 %></td>
 						<td><%=nts.get(i).getTypename() %></td>
 						<td>
 						
 						
 							<a  class="layui-btn layui-btn-xs"  href="adminnewstype?method=del&typeid=<%=nts.get(i).getTypeid()  %>" onclick="return confirm('你确定要删除嘛')">删除 </a>
+							<button class="layui-btn layui-btn-xs" onclick="updateBut(this)" data-id="<%=nts.get(i).getTypeid() %>" type="button">修改</button>
 						</td>
 					</tr>
    
@@ -167,7 +182,8 @@ alert("输入框不能为空");
 					</td>
 				</tr>
 				<tr>
-					<td><input type="button" onclick="add()" value="确定添加" /></td>
+					<td><input type="button" class="layui-btn layui-btn-xs" onclick="add()" value="确定添加" /></td>
+					
 				</tr>
 
 			</table>

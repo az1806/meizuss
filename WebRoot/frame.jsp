@@ -77,13 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	<li>
 		                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="iconfont icon-huojian left"></i>iconfont字体库</a>
 		           	</li>
-		        	<li>
-		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-liuliangyunpingtaitubiao03 left"></i>分管管理<i class="iconfont icon-dajiantouyou right"></i></a>
-		                <dl>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/agent_add.html',this)">添加分管</a></dt>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/agent_list.html',this)">分管列表</a></dt>
-		                </dl>
-		            </li>
+		        	
 		        	<li>
 		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>商品管理<i class="iconfont icon-dajiantouyou right"></i></a>
 		                <dl>
@@ -103,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>公司成员管理<i class="iconfont icon-dajiantouyou right"></i></a>
 		                <dl>
 	
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('adminmember?method=query',this)">成员</a></dt>
+		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('houtaimembers',this)">成员</a></dt>
 		                	
 		                </dl>
 		            </li>
@@ -124,32 +118,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                </dl>
 		            </li>
 		            
-		        	<li>
-		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-yunying left"></i>基础库内容<i class="iconfont icon-dajiantouyou right"></i></a>
-		                <dl>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_add.html',this)">表单含编辑器</a></dt>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_list.html',this)">常用列表</a></dt>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_customList.html',this)">可新增的列表</a></dt>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_customNewList.html',this)">可新增的列表(手写)</a></dt>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/pages.html',this)">页签切换Table</a></dt>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/maintain.html',this)">维护中页面</a></dt>
-		                </dl>
-		           	</li>
-		        	<li>
-		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-icon left"></i>打印模板<i class="iconfont icon-dajiantouyou right"></i></a>
-		                <dl>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/print/outPrintData.html',this)">入库单打印模版</a></dt>
-		                </dl>
-		           	</li>
-		        	<li>
-		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-caiwu left"></i>财务管理</a>
-		           	</li>
-		        	<li>
-		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-icon left"></i>报表模块<i class="iconfont icon-dajiantouyou right"></i></a>
-		                <dl>
-		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/reportForm/reportForm1.html',this)">订单统计报表</a></dt>
-		                </dl>
-		           	</li>
+		        	
+		        	
+		        	
 		        </ul>
 		    </div>
 		</div>

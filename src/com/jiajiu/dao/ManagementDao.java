@@ -24,7 +24,7 @@ public interface ManagementDao {
 	 * 返回一个登录管理者
 	 */
 	
-	Management selectMageByBame(String username);
+	Management selectMageByBame(String username,String pwd);
 
 	
 	

@@ -32,14 +32,32 @@ public class Article_list_contentServlet extends HttpServlet {
 				
 				
 				/**
-				 * 无参显示内容方法
+				 *根据id来显示详情
 				 */
+				Integer newsid=Integer.parseInt(request.getParameter("newsid"));
+				     NewsDao ndao=new NewsDaoImpl();
+				     News news=ndao.queryNewsByID(newsid);
+				request.setAttribute("news", news);
 				
-				NewsDao newsdaowucan=new NewsDaoImpl();
-				List<News> newslistwucan=newsdaowucan.queryNewsDaowucan();       
-				request.setAttribute("newslistwucan",newslistwucan);
 				
 				
+				List<News> newslist=ndao.queryNewsDaowucan();
+				request.setAttribute("newslist", newslist);	
+				
+				
+				int typeid;
+				if(request.getParameter("typeid")==null){
+					typeid=nts.get(0).getTypeid();
+				
+				}else{
+					
+					typeid=Integer.parseInt(request.getParameter("typeid"));
+				}
+
+				
+				NewsDao newsdao=new NewsDaoImpl();
+				List<News> newslistid=newsdao.queryNewsDao(typeid);       
+				request.setAttribute("newslistid",newslistid);
 				
 				request.getRequestDispatcher("article_list_content.jsp").forward(request, response);
 			

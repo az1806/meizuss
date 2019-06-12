@@ -54,6 +54,41 @@ List<ProductClass> pts = (List<ProductClass>) request.getAttribute("hproductclas
 
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
+	//修改按钮
+	
+			
+				
+				
+				
+var layer,index;
+layui.use(['layer'],function(){
+layer=layui.layer;
+
+} );
+function updateBut(e){
+var typeid=e.getAttribute("data-id");
+index=layer.open({
+
+type:2,
+title:'修改产品类别',
+shadeClose:true,
+shade:[0.8,'#393D49'],
+maxmin:true,
+area:['950','500'],
+content : 'adminproducttype?method=zhezhao&typeid='+typeid,
+end:function(layer,index){
+}
+
+
+
+
+});
+
+
+}
+
+
+
 	function add() {
 		
 		var typename = document.getElementById("typename").value;
@@ -65,25 +100,9 @@ List<ProductClass> pts = (List<ProductClass>) request.getAttribute("hproductclas
     window.location.href="adminproducttype?method=add&typename="+encodeURI(encodeURI(typename));
        }
 
-
-
-
-		//1.url地址  2.参数  3.回调函数  4.返回类型
-	/*	$.post("adminproducttype?method=add", {
-			
-			"typename" : typename
-		}, function(res) {//服务器返回的内容
-			if (res.success) {
-				alert(res.message);
-				location.reload(true);
-				//跳转页面
-			} else {
-				alert(res.message);
-			}
-		}, "json");  */
 	}
 
-	function del(e) {
+	/*function del(e) {
 	var type=e.getAttribute("data-name");
 	var typeid=e.getAttribute("data-id");
     var a=confirm("你确定要删除"+type+"这个类别嘛"); 
@@ -93,10 +112,10 @@ List<ProductClass> pts = (List<ProductClass>) request.getAttribute("hproductclas
      
      }
      
+} 
+*/
 
-
-
-	} 
+	
 	
 </script>
 
@@ -143,18 +162,20 @@ List<ProductClass> pts = (List<ProductClass>) request.getAttribute("hproductclas
 					for (int i = 0; i < pts.size(); i++) {
 				%>
 				<tr>
-					<td id="typeids"><%=pts.get(i).getTypeid()%></td>
+					<td id="typeids"><%=i+1%></td>
 					<td><%=pts.get(i).getTypename()%>
 						</td>
-					<td>
-
 						
-					<button data-id="<%=pts.get(i).getTypeid()  %>"
-					data-name="<%=pts.get(i).getTypename() %>"
-     onclick="del(this)"  class="layui-btn layui-btn-xs"
-							> 删除
-							</button>
+						
+					<td>
+					
+
+							<a class="layui-btn layui-btn-xs" href="adminproducttype?method=del&typeid=<%=pts.get(i).getTypeid()%>" onclick="return confirm('你确定要删除嘛')">删除 </a>
+							<button class="layui-btn layui-btn-xs" onclick="updateBut(this)" data-id="<%=pts.get(i).getTypeid() %> " type="button">修改</button>
 					</td>
+					
+					
+					
 				</tr>
 
 				<%

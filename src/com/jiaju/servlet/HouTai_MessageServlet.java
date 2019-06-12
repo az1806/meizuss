@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jiajiu.dao.MessageDao;
 import com.jiajiu.dao.impl.MessageDaoImpl;
@@ -34,8 +35,9 @@ public class HouTai_MessageServlet extends HttpServlet {
 		
 		messages=messdao.queryMessages();
 		request.setAttribute("messages", messages);
-				
-		request.getRequestDispatcher("/tgls/messageManage/message_list.jsp").forward(request, response);
+		
+			request.getRequestDispatcher("/tgls/messageManage/message_list.jsp").forward(request, response);
+	
 		
 	
 	}

@@ -45,69 +45,37 @@ public class ProductlistDaoImpl implements ProductlistDao{
 		 return null;
 	}
 
-	@Override
-	public List<Product> queryProductwucan() {
-		ResultSet rs=DBManager.querySQL("select * from productinfo");
-		List<Product> products=new ArrayList<Product>();
 	
-		 try {
-			while(rs.next()){
-				Product product=new Product();
-				 product.setCpid(rs.getInt(1));
+
+
+	@Override
+	public List<Product> queryProductSearch(Integer typeid,String name,String function,String content) {
+		
+		String sql="SELECT * from productinfo where 1=1";
+		
+		if(typeid>0){
+			sql+=" and typeid ='"+typeid+"'";
 			
-				 product.setTypeid(rs.getInt(2));
-				 product.setName(rs.getString(3));
-				 product.setFunction(rs.getString(4));
-				 product.setPrice(rs.getDouble(5));
-				 product.setImg(rs.getString(6));
-				 product.setContent(rs.getString(7));
-				 products.add(product);
-				 
-			 }
-			 return products;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		
+		if(name!=null&&!name.equals("")){
+			
+			sql+=" and name like '%"+name+"%'";
+		}
+		if(function!=null&&!function.equals("")){
+			
+			sql+=" and function like '%"+function+"%'";
+			
+		}
+		if(content!=null&&!content.equals("")){
+			
+			sql+=" and content like '%"+content+"%'";
+		}
 		
-		 return null;
-	}
-///**
-// * Ëæ»úÕ¹Ê¾
-// */
-//	
-//	@Override
-//	public List<Product> queryProductRecommed() {
-//     ResultSet rs=DBManager.querySQL("select * from productinfo ORDER BY RAND()LIMIT 6");
-//     List<Product> products=new ArrayList<Product>();
-//     try {
-//		while(rs.next()){
-//			 Product pd=new Product();
-//			 pd.setCpid(rs.getInt(1));
-//			 pd.setImg(rs.getString("img"));
-//			
-//			products.add(pd);
-//			
-//			 
-//		 }
-//		return products;
-//	} catch (SQLException e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-//          
-//     
-//		
-//     return null;
-//
-//	}
-
-	@Override
-	public List<Product> queryProductSearch(String name) {
+		System.out.println(sql);
+		ResultSet rs=DBManager.querySQL(sql);
 		
-		ResultSet rs=DBManager.querySQL("SELECT * from productinfo where name LIKE '%"+name+"%' ");
 		
 		List<Product> products=new ArrayList<Product>();
 		
@@ -115,13 +83,21 @@ public class ProductlistDaoImpl implements ProductlistDao{
 			while(rs.next()){
 				Product product=new Product();
 				 product.setCpid(rs.getInt(1));
+				 
 				 product.setTypeid(rs.getInt(2));
+				 
 				 product.setName(rs.getString(3));
+				 
 				 product.setFunction(rs.getString(4));
+				 
 				 product.setPrice(rs.getDouble(5));
+				 
 				 product.setImg(rs.getString(6));
+				 
 				 product.setContent(rs.getString(7));
+				 
 				 products.add(product);
+				 
 			 }
 			 return products;
 		} catch (SQLException e) {
@@ -197,6 +173,104 @@ public class ProductlistDaoImpl implements ProductlistDao{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public List<Product> queryProductSearchs(String name) {
+		// TODO Auto-generated method stub
+		ResultSet rs=DBManager.querySQL("select * from productinfo where name like '%"+name+"%'");
+		List<Product> products=new ArrayList<Product>();
+		 try {
+				while(rs.next()){
+					Product product=new Product();
+					 product.setCpid(rs.getInt(1));
+					 
+					 product.setTypeid(rs.getInt(2));
+					 
+					 product.setName(rs.getString(3));
+					 
+					 product.setFunction(rs.getString(4));
+					 
+					 product.setPrice(rs.getDouble(5));
+					 
+					 product.setImg(rs.getString(6));
+					 
+					 product.setContent(rs.getString(7));
+					 
+					 products.add(product);
+					 
+				 }
+				 return products;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+		return null;
+	}
+
+
+
+
+	@Override
+	public List<Product> queryProductwucan() {
+		// TODO Auto-generated method stub
+		
+				ResultSet rs=DBManager.querySQL("select * from productinfo");
+				List<Product> products=new ArrayList<Product>();
+			
+				 try {
+					while(rs.next()){
+						Product product=new Product();
+						 product.setCpid(rs.getInt(1));
+					
+						 product.setTypeid(rs.getInt(2));
+						 product.setName(rs.getString(3));
+						 product.setFunction(rs.getString(4));
+						 product.setPrice(rs.getDouble(5));
+						 product.setImg(rs.getString(6));
+						 product.setContent(rs.getString(7));
+						 products.add(product);
+						 
+					 }
+					 return products;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				
+				 return null;
+	}
+
+
+
+
+	@Override
+	public Product queryProById(int cpid) {
+		// TODO Auto-generated method stub
+				ResultSet rs=DBManager.querySQL("select * from productinfo where cpid="+cpid);
+				try {
+					while(rs.next()){
+						Product product=new Product();
+						 product.setCpid(rs.getInt(1));
+					
+						 product.setTypeid(rs.getInt(2));
+						 product.setName(rs.getString(3));
+						 product.setFunction(rs.getString(4));
+						 product.setPrice(rs.getDouble(5));
+						 product.setImg(rs.getString(6));
+						 product.setContent(rs.getString(7));
+						return product;
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
 	}
 
 	

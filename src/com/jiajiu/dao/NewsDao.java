@@ -31,5 +31,15 @@ public interface NewsDao {
 		int addNews(int typeid,String title,String content,String time);
 	
 	   int delNews(int newsid);
-		
+	   
+	   /**
+	    * 显示新闻详情
+	    */
+	   News queryNewsByID(int newsid);
+		/***
+		 * 根据id来修改新闻
+		 */
+	  int updateNewsById(int newsid,int typeid,String title,String content,String time);
+	  
+	  List<News> conditionquery(Integer typeid,String title,String content);
 }

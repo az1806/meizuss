@@ -24,23 +24,26 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<!-- 重写汉字 -->
+<script src="js/hanzi-writer.min.js"></script>
+<script src="js/polyfill.min.js"></script>
 
 </head>
 
 
-  <body>
-   <header>
+  <body><% Company com = (Company) request.getAttribute("company"); %>
+   <header> 
     <div class="header-top">
         <div class="width-center">
-            <div class="header-logo "><img src="images/meizulogo.jpg" alt=""></div>
-            <div class="header-title div-inline">
-                <strong><% Company com = (Company) request.getAttribute("company"); %>
+            <div class="header-logo "><img src="<%=com.getLogo() %>" alt=""></div>
+            <div class="header-title div-inline" style="color: white;">
+                <strong>
 					<%=com.getCompanyname()%> </strong>
                 <span> 
 					<%=com.getWww()%> 
 					
 					</span>
+					    <div id="character-target-div"></div>
             </div>
 
             <div class="search-box div-inline">
@@ -87,6 +90,31 @@
     
 </div>
 </header>
+<script>
+  
+
+
+	var char = '谢谢你长的这么好看还来看我们的官网',writer = [];
+	
+	for (var x = 0; x < char.length; x++) {
+		writer.push(writeChar(char[x]))
+	}
+	function writeChar(char) {
+		return HanziWriter.create('character-target-div', char, {
+			width: 50,
+			height: 50,
+			padding: 3,
+			showOutline: true
+		});
+	}
+	document.getElementById('character-target-div').addEventListener('click', function () {
+		if(writer.length > 0){
+			writer.map(function(w){
+				w.animateCharacter()
+			})
+		}
+	});
+</script>
   </body>
 
 </html>

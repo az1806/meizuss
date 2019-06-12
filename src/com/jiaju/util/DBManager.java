@@ -26,7 +26,7 @@ public class DBManager {
 			System.out.println("数据库连接失败！或执行sql失败！");
 			e.printStackTrace();
 		} finally {
- 
+      
 		
 		}
 
@@ -44,7 +44,7 @@ public class DBManager {
 		Connection con = null;
 		Statement sta = null;
 		try {
-			con = (Connection) DriverManager.getConnection(
+				con = (Connection) DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/meizu", "root", "bxy3367158");
 			sta = (Statement) con.createStatement();
 			ResultSet rs = (ResultSet) sta.executeQuery(sql);

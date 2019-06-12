@@ -9,10 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jiajiu.dao.CompanyDao;
 import com.jiajiu.dao.ProductClassDao;
 import com.jiajiu.dao.ProductlistDao;
+import com.jiajiu.dao.impl.CompanyDaoImpl;
 import com.jiajiu.dao.impl.ProductClassDaoImpl;
 import com.jiajiu.dao.impl.ProductlistDaoImpl;
+
+import com.jiaju.entity.Company;
 import com.jiaju.entity.Product;
 import com.jiaju.entity.ProductClass;
 
@@ -30,10 +34,25 @@ public class Productdetails extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+
+		/**
+		 * 获取公司信息;
+		 */
+		CompanyDao comDao = new CompanyDaoImpl();
+		Company com = comDao.queryCompany();
+		
+		
+		
+	
+	  request.setAttribute("company", com);
+		
+		
+		
 		 ProductClassDao pcd=new ProductClassDaoImpl();		
 		   List<ProductClass> pts=pcd.queryProductClass();
 		
-		  
+		   request.setAttribute("productclass",pts);
 		   int typeid;
 		  
 		   
@@ -44,25 +63,44 @@ public class Productdetails extends HttpServlet {
 			   typeid=Integer.parseInt(request.getParameter("typeid"));
 			   
 		   }
-		
 		   
-		/**
-		 * 有参进行切换
-		 */
-       ProductlistDao productdao=new ProductlistDaoImpl();
-      List<Product> plist=productdao.queryProduct(typeid);
+			/**
+			 * 有参进行切换
+			 */
+	       ProductlistDao productdao=new ProductlistDaoImpl();
+	      List<Product> plist=productdao.queryProduct(typeid);
+	      request.setAttribute("plist",plist);
+	
+      
+      /**
+       * 对象显示产品详情
+       */
+     
+	      
+     
+     
+		   
+	    
+    	  
+	   
       
       
       /**
-       * 无参显示产品详情
+       * 根据产品id来查详情
        */
-      ProductlistDao productdaowucan=new ProductlistDaoImpl();
-      List<Product> plistwucan=productdaowucan.queryProductwucan();
+	  int  cpid=Integer.parseInt(request.getParameter("cpid"));
+      ProductlistDao productdaos=new ProductlistDaoImpl();
+      Product products=productdaos.queryProById(cpid);
+      request.setAttribute("products",products);
+    
       
-      request.setAttribute("plistwucan",plistwucan);
       
-      request.setAttribute("plist",plist);
-		 request.setAttribute("productclass",pts);
+      
+      
+      
+      List<Product> productss=productdao.queryProductwucan();
+      request.setAttribute("productss",productss);
+      
 		request.getRequestDispatcher("productdetails.jsp").forward(request, response);
 	}
 

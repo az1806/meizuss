@@ -33,7 +33,12 @@ public class MessageServlet extends HttpServlet {
 		String phonez=request.getParameter("tel");
 		String emailz=request.getParameter("email");
 		String contentz=request.getParameter("content");
+		
+		
+		
 		PrintWriter out=response.getWriter();
+		
+		
 		
 		MessageDao msdo=new MessageDaoImpl();
 		

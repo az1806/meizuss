@@ -22,12 +22,17 @@ public interface NewsTypeDao {
 	/**
 	 * 增加一个类别
 	 * @param typeid
-	 * @param typename
+	 * @param 类别名称
 	 * @return
 	 */
 	boolean addNewsType(String typename);
+	/**
+	 * 根据typeid显示类别名称
+	 * @param typeid
+	 * @return
+	 */
+	NewsType queryNewsTypeByID(int typeid);
 	
-	
-	
+	int updateNewsType(int typeid,String typename);
 
 }

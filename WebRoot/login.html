@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-
-	<head>
+ <head>
+ <base href="<%=basePath%>">
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 		<!-- Google Chrome Frame也可以让IE用上Chrome的引擎: -->
@@ -29,6 +29,43 @@
 		
 		<link rel="stylesheet" type="text/css" href="css/login1.css">
 		<script type="text/javascript" src="js/login1.js"></script>
+		
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+function login(){
+var name=document.getElementById("name").value;
+var password=document.getElementById("password").value;
+
+if(name==""||password==""){
+alert("密码和用户名不能为空");
+
+}
+
+$.post("login?method=login",{name:name,password:password},function(res){
+if(res.success){
+
+alert(res.message);
+window.location.href="frame";
+
+}else{
+
+alert(res.message);
+}
+
+},'json');
+
+
+
+
+
+
+
+}
+
+
+
+
+</script>
 	</head>
 
 	<body>
@@ -40,21 +77,21 @@
 					<p>十一组荣誉出品</p>
 				</div>
 				<div class="right">
-					<form class="layui-form layui-form-pane" action="login" method="post">
+					<form class="layui-form layui-form-pane">
 						<div class="layui-form-item">
 							<label class="layui-form-label login_title"><i class="iconfont icon-gerenzhongxin-denglu"></i></label>
 							<div class="layui-input-block login_input">
-								<input type="text" name="name" required lay-verify="required" autocomplete="off" placeholder="请输入您的用户名" class="layui-input">
+								<input type="text" id="name" required lay-verify="required" autocomplete="off" placeholder="请输入您的用户名" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label login_title"><i class="iconfont icon-mima1"></i></label>
 							<div class="layui-input-block login_input">
-								<input type="password" name="password" required lay-verify="required" autocomplete="off" placeholder="请输入密码" class="layui-input">
+								<input type="password"  id="password" required lay-verify="required" autocomplete="off" placeholder="请输入密码" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item">
-							<button class="layui-btn layui-btn-fluid login_but" lay-submit lay-filter="loginBut">登 录</button>
+							<button class="layui-btn layui-btn-fluid login_but" lay-submit lay-filter="loginBut" type="button" onclick="login()">登 录</button>
 						</div>
 						<div class="layui-form-item">
 							<input type="radio" name="sex" value="管理员" title="管理员" checked lay-filter="userType">

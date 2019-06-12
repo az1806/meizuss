@@ -53,8 +53,10 @@ top:20px
 }
 
 #img{
-width:200px;
-height:200px;
+margin-top:40px;
+width:150px;
+height:150px;
+
 }
 
 </style>
@@ -82,14 +84,14 @@ height:200px;
 
 		<div class="about-box">
 			<div class="about-leftbox">
-				<img src="images/banner4.jpg" alt="">
+				<img src="<%=com.getCimg() %>" alt="">
 			</div>
 			<div class="about-rightbox">
 				<h1>企业文化</h1>
 				<p>CORPORATE CULTURE</p>
 				   <strong>
-                <% Company con = (Company) request.getAttribute("company"); %>
-                <%= con.getCulture() %>
+          
+                <%= com.getCulture() %>
                 </strong>
 			</div>
 		</div>

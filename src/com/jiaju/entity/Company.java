@@ -12,6 +12,21 @@ public class Company {
 	
 	private String imgzong;
 	private String www;
+	private String cimg;
+	private String logo;
+	
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+	public String getCimg() {
+		return cimg;
+	}
+	public void setCimg(String cimg) {
+		this.cimg = cimg;
+	}
 	public String getWww() {
 		return www;
 	}
@@ -74,10 +89,22 @@ public class Company {
 	public void setImgzong(String imgzong) {
 		this.imgzong = imgzong;
 	}
+	
+	public Company() {
+		
+	}
+	@Override
+	public String toString() {
+		return "Company [companyid=" + companyid + ", companyname="
+				+ companyname + ", syjs=" + syjs + ", gyjs=" + gyjs
+				+ ", culture=" + culture + ", address=" + address + ", email="
+				+ email + ", contact=" + contact + ", imgzong=" + imgzong
+				+ ", www=" + www + ", cimg=" + cimg + ", logo=" + logo + "]";
+	}
+	
 	public Company(int companyid, String companyname, String syjs, String gyjs,
 			String culture, String address, String email, String contact,
-			
-			String imgzong, String www) {
+			String imgzong, String www, String cimg, String logo) {
 		super();
 		this.companyid = companyid;
 		this.companyname = companyname;
@@ -87,21 +114,12 @@ public class Company {
 		this.address = address;
 		this.email = email;
 		this.contact = contact;
-		
 		this.imgzong = imgzong;
 		this.www = www;
+		this.cimg = cimg;
+		this.logo = logo;
 	}
-	public Company() {
-		
-	}
-	@Override
-	public String toString() {
-		return "Company [companyid=" + companyid + ", companyname="
-				+ companyname + ", syjs=" + syjs + ", gyjs=" + gyjs
-				+ ", culture=" + culture + ", address=" + address + ", email="
-				+ email + ", contact=" + contact + ", imgzong=" + imgzong + ", www="
-				+ www + "]";
-	}
+
 
 	
 	

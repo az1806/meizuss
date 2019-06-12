@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class FrameServlet extends HttpServlet {
 
@@ -20,14 +21,18 @@ public class FrameServlet extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=utf-8");
-		request.getRequestDispatcher("frame.jsp").forward(request, response);
+		response.setContentType("text/html;charset=UTF-8");
+		response.sendRedirect("frame.jsp");
+
+		
+		
 	}
 
 	/**
@@ -46,8 +51,16 @@ public class FrameServlet extends HttpServlet {
 		response.setContentType("text/html");
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=utf-8");
-		request.getRequestDispatcher("frame.jsp").forward(request, response);
+		response.setContentType("text/html;charset=UTF-8");
+		
+		HttpSession session=request.getSession();
+		if(session.getAttribute("name")!=null){
+			response.sendRedirect("frame.jsp");
+		}else{
+			
+			response.sendRedirect("login.jsp");
+			
+		}
 	}
 
 }

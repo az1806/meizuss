@@ -54,9 +54,9 @@ public class ManagementDaoImpl implements ManagementDao{
 	}
 
 	
-	public Management selectMageByBame(String name) {
+	public Management selectMageByBame(String name,String pwd) {
 		// TODO Auto-generated method stub
-		ResultSet rs=DBManager.querySQL("select * from managementinfo where username='"+name+"'");
+		ResultSet rs=DBManager.querySQL("select * from managementinfo where username='"+name+"' or pwd="+pwd);
 		
 		if(rs!=null){
 		try {

@@ -23,7 +23,8 @@ public class CompanyDaoImpl implements CompanyDao {
 				com.setEmail(rs.getString(7));
 				com.setContact(rs.getString(8));
 				com.setWww(rs.getString("www"));
-				
+		       com.setLogo(rs.getString("logo"));
+	      	com.setCimg(rs.getString("cultureimg"));
 				com.setImgzong(rs.getString("imgzong"));
 			}
 			System.out.println(com);

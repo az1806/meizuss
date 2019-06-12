@@ -57,7 +57,35 @@ Product pro=(Product) request.getAttribute("pro");
 			}
 		</style>
 		<script type="text/javascript">
-	
+		
+		
+		/*
+		
+		这是上传图片的
+		
+		*/
+		var layer, upload;
+				$(function() {
+					layui.use([ 'layer', 'upload' ], function() {
+
+						upload = layui.upload;
+						layer = layui.layer;
+						upload.render({
+
+							elem : '#test1',
+							url : 'adminproduct?method=saveImg', //服务器端接收文件数据的地址
+							done : function(res) {
+
+								layer.alert(res.message);
+								$("#img").val(res.message);
+
+							}
+
+						});
+
+					});
+
+				})
 		
                    function update() {
                    	var cpid = document.getElementById("cpid").value;
@@ -125,6 +153,9 @@ Product pro=(Product) request.getAttribute("pro");
 						<input type="text" id="img" value="<%=pro.getImg() %>" required lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
+				
+				<button type="button" class="layui-btn" id="test1">上传图片</button>
+				
 				<div class="layui-form-item">
 					<div class="layui-input-block">
 					

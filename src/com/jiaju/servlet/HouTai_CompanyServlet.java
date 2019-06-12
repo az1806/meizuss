@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jiajiu.dao.CompanyDao;
 import com.jiajiu.dao.impl.CompanyDaoImpl;
@@ -31,8 +32,10 @@ public class HouTai_CompanyServlet extends HttpServlet {
 		
 		Company com=comdao.queryCompany();
 		request.setAttribute("com",com);
-		request.getRequestDispatcher("/tgls/companyManage/companylist.jsp").forward(request, response);
 		
+		
+			request.getRequestDispatcher("/tgls/companyManage/companylist.jsp").forward(request, response);
+	
 	}
 
 	/**

@@ -5,6 +5,8 @@
 	String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 List<Product> prosearch=(ArrayList<Product>) request.getAttribute("prosearch");
+List<Product> products=(List<Product>) request.getAttribute("houtaiproductlist");
+List<ProductClass> pclist=(List<ProductClass> ) request.getAttribute("pclist");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -76,110 +78,147 @@ List<Product> prosearch=(ArrayList<Product>) request.getAttribute("prosearch");
 
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-
-
-
-
+	
 </script>
 </head>
 
 <body>
 	<div class="cBody">
 		<div class="console">
-			<form class="layui-form" action="">
+			<form class="layui-form">
 				<div class="layui-form-item">
-					<div class="layui-input-inline">
-						<input type="text" name="name" required lay-verify="required"
-							placeholder="输入商品名称" autocomplete="off" id="search"  class="layui-input">
-					</div>
+					<span>请选择类别</span> <select>
+						<option selected="selected" value=0></option>
+						<%
+							for(int i=0;i<pclist.size();i++){
+						%>
+						<option value="<%=pclist.get(i).getTypeid()%>"><%=pclist.get(i).getTypename()%>
+						</option>
 
 
-					
-                   <input type="button" class="layui-btn"  onclick="searchs()"  value="检索">
+						<%
+							}
+						%>
+					</select> <span class="layui-input-inline"> <input type="text"
+						name="name" required lay-verify="required" placeholder="输入商品名称"
+						autocomplete="off" id="names" class="layui-input"> </span> <span
+						class="layui-input-inline"> <input type="text" required
+						lay-verify="required" id="sfunction" placeholder="输入商品功能"
+						autocomplete="off" class="layui-input"> </span> <span
+						class="layui-input-inline"> <input type="text" required
+						lay-verify="required" id="content" placeholder="输入商品内容"
+						autocomplete="off" class="layui-input"> </span> <input
+						type="button" class="layui-btn" onclick="searchs()" value="检索">
 				</div>
 			</form>
 
 			<script>
-			function searchs(){
+				function searchs() {
+					var typeid = $("select option:selected").val();
+				
+					var names = $("#names").val();
+					
+					var sfunction = $("#sfunction").val();
+					
+					var content = $("#content").val();
+					
+					window.location.href = "adminproduct?method=search&name="
+							+ names + "&sfunction=" + sfunction + "&content="
+							+ content + "&typeid=" + typeid;
 
-var names=document.getElementById("search").value;
-alert(names);
-window.location.href="adminproduct?method=search&name="+encodeURI(encodeURI(names))
-;
+				}
 
-
-
-
-}
-			
 				function add() {
 					var addtypeid = document.getElementById("addtypeid").value;
 					var addname = document.getElementById("addname").value;
-					
-					var addfunction=document.getElementById("addfunction").value;
+
+					var addfunction = document.getElementById("addfunction").value;
 					var addprice = document.getElementById("addprice").value;
 					var addimg = document.getElementById("addimg").value;
 					var addcontent = document.getElementById("addcontent").value;
-					if(addtypeid==""||addname==""||addfunction==""||addprice==""||addimg==""||addcontent==""){
-					alert("有输入框为空啦")
-					
-					
-					}else{
-                     window.location.href="adminproduct?method=add&addtypeid="+addtypeid+"&addname="+encodeURI(encodeURI(addname))+"&addfunction="+encodeURI(encodeURI(addfunction))+"&addprice="+addprice+"&addimg="+addimg+"&addcontent="+encodeURI(encodeURI(addcontent))+"";
-                     
-                     }
-                     
-                     
-                     
-                     	}
-                     	
-               
-                     	
-                     	
-                     	
-                     	
-			/**	
-			
-			
-			
-			
-				$.post("adminproduct?method=add", {
-						"addtypeid":addtypeid,"addname":addname,"addfunction":addfunction,"addprice":addprice,"addimg":addimg,"addcontent":addcontent
-					}, function(res) {
-						alert("商品加入成功");	window.location.href="adminmember?method=add&name="+name+"&position="+position+"&photo="+photo+"";
-					}, "json");
-              window.location.reload();
+					if (addtypeid == "" || addname == "" || addfunction == ""
+							|| addprice == "" || addimg == ""
+							|| addcontent == "") {
+						alert("有输入框为空啦")
 
-         setTimeout(add , 500);  */
-         /**
-         检测typeid只能为数字
-        
-			function checkTypeid(){
-			
-			var typeid=$("#addtypeid").val();
-			alert(typeid);
-			
-			
-			
-			} */
+					} else {
+						window.location.href = "adminproduct?method=add&addtypeid="
+								+ addtypeid
+								+ "&addname="
+								+ addname
+								+ "&addfunction="
+								+ encodeURI(encodeURI(addfunction))
+								+ "&addprice="
+								+ addprice
+								+ "&addimg="
+								+ addimg
+								+ "&addcontent="
+								+ encodeURI(encodeURI(addcontent)) + "";
 
+					}
 
-function del(e){
-var cpid=e.getAttribute("data-id");
-var a=    confirm("您确认删除该商品吗?");
+				}
 
-if(a){
+				/**	
+				
+				
+				
+				
+					$.post("adminproduct?method=add", {
+							"addtypeid":addtypeid,"addname":addname,"addfunction":addfunction,"addprice":addprice,"addimg":addimg,"addcontent":addcontent
+						}, function(res) {
+							alert("商品加入成功");	window.location.href="adminmember?method=add&name="+name+"&position="+position+"&photo="+photo+"";
+						}, "json");
+				  window.location.reload();
 
-window.location.href="adminproduct?method=del&cpid="+cpid;
+				setTimeout(add , 500);  */
+				/**
+				检测typeid只能为数字
+				
+				function checkTypeid(){
+				
+				var typeid=$("#addtypeid").val();
+				alert(typeid);
+				
+				
+				
+				} */
 
-}
+				function del(e) {
+					var cpid = e.getAttribute("data-id");
+					var a = confirm("您确认删除该商品吗?");
 
+					if (a) {
 
-}
+						window.location.href = "adminproduct?method=del&cpid="
+								+ cpid;
 
+					}
 
+				}
 
+				var layer, upload;
+				$(function() {
+					layui.use([ 'layer', 'upload' ], function() {
 
+						upload = layui.upload;
+						layer = layui.layer;
+						upload.render({
+
+							elem : '#test1',
+							url : 'adminproduct?method=saveImg', //服务器端接收文件数据的地址
+							done : function(res) {
+
+								layer.alert(res.message);
+								$("#addimg").val(res.message);
+
+							}
+
+						});
+
+					});
+
+				})
 
 				layui.use('form', function() {
 					var form = layui.form;
@@ -209,15 +248,15 @@ window.location.href="adminproduct?method=del&cpid="+cpid;
 				</tr>
 			</thead>
 			<tbody>
-                
-			  <%if(request.getParameter("name")!=null ){
-			  for(int i=0;i<prosearch.size();i++){
-			  
-			   %>
-			  
-			  
-			  <tr>
-					<td><%=prosearch.get(i).getCpid()%></td>
+
+				<%
+					if(prosearch!=null){
+					  for(int i=0;i<prosearch.size();i++){
+				%>
+
+
+				<tr>
+					<td><%=i+1%></td>
 					<td><%=prosearch.get(i).getTypeid()%></td>
 
 					<td><%=prosearch.get(i).getName()%></td>
@@ -225,37 +264,36 @@ window.location.href="adminproduct?method=del&cpid="+cpid;
 					<td><%=prosearch.get(i).getPrice()%></td>
 
 					<td><img src="<%=prosearch.get(i).getImg()%>" width="20"
-						         height="20" onmouseenter="imgBig(this)"
-					                      	onmouseleave="imgSmall(this)" />
-					</td>
+						height="20" onmouseenter="imgBig(this)"
+						onmouseleave="imgSmall(this)" /></td>
 					<td><%=prosearch.get(i).getContent()%></td>
 					<td>
-						<button class="layui-btn layui-btn-xs" onclick="updateBut(this)" data-id="<%=prosearch.get(i).getCpid()%>">修改</button>
+						<button class="layui-btn layui-btn-xs" onclick="updateBut(this)"
+							data-id="<%=prosearch.get(i).getCpid()%>">修改</button>
 
-						
-						<button class="layui-btn layui-btn-xs" onclick="del(this)" data-id="<%=prosearch.get(i).getCpid()%>">删除</button>
-					</td>
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			<% }  }else{ %>
-			
-			
-			
-			
-				<%
-					List<Product> products=(List<Product>) request.getAttribute("houtaiproductlist");
-						
+
+						<button class="layui-btn layui-btn-xs" onclick="del(this)"
+							data-id="<%=prosearch.get(i).getCpid()%>">删除</button></td>
+
+
+
+
+
+
+
+					<%
+						}  }else{
+					%>
+
+
+
+
+					<%
 						for(int i=0;i<products.size();i++){
-				%>
-
-
+					%>
+				
 				<tr>
-					<td><%=products.get(i).getCpid()%></td>
+					<td><%=i+1%></td>
 					<td><%=products.get(i).getTypeid()%></td>
 
 					<td><%=products.get(i).getName()%></td>
@@ -264,15 +302,15 @@ window.location.href="adminproduct?method=del&cpid="+cpid;
 
 					<td><img src="<%=products.get(i).getImg()%>" width="20"
 						height="20" onmouseenter="imgBig(this)"
-						onmouseleave="imgSmall(this)" />
-					</td>
+						onmouseleave="imgSmall(this)" /></td>
 					<td><%=products.get(i).getContent()%></td>
 					<td>
-						<button class="layui-btn layui-btn-xs" onclick="updateBut(this)" data-id="<%=products.get(i).getCpid()%>">修改</button>
+						<button class="layui-btn layui-btn-xs" onclick="updateBut(this)"
+							data-id="<%=products.get(i).getCpid()%>">修改</button>
 
-						
-						<button class="layui-btn layui-btn-xs" onclick="del(this)" data-id="<%=products.get(i).getCpid()%>">删除</button>
-					</td>
+
+						<button class="layui-btn layui-btn-xs" onclick="del(this)"
+							data-id="<%=products.get(i).getCpid()%>">删除</button></td>
 				</tr>
 				<%
 					}}
@@ -281,7 +319,7 @@ window.location.href="adminproduct?method=del&cpid="+cpid;
 
 
 			</tbody>
-			
+
 		</table>
 
 
@@ -293,13 +331,14 @@ window.location.href="adminproduct?method=del&cpid="+cpid;
 }
 </style>
 		<div class="cBody">
-			<form  class="layui-form">
+			<form class="layui-form">
 
 				<div class="layui-form-item">
 					<label class="layui-form-label">商品类别</label>
 					<div class="layui-input-block">
 						<input type="text" name="typeid" id="addtypeid" required
-							lay-verify="required" autocomplete="off" class="layui-input" onblur="checkTypeid()"/>
+							lay-verify="required" autocomplete="off" class="layui-input"
+							onblur="checkTypeid()" />
 					</div>
 				</div>
 				<div class="layui-form-item">
@@ -347,14 +386,21 @@ window.location.href="adminproduct?method=del&cpid="+cpid;
 				<div class="layui-form-item">
 					<div class="layui-input-block">
 
-						<input type="button" class="layui-btn" value="提交" onclick="add()"/>
+						<input type="button" class="layui-btn" value="提交" onclick="add()" />
 						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>
+				 图片：<img
+					id="imgFace" style="width:120px" /><br /> <input type="file"
+					name="file" class="layui-upload-file" /> <br />
+				<button type="button" class="layui-btn" id="test1">上传图片</button>
+				
 			</form>
+			
 			<!-- layUI 分页模块 -->
 			<div id="pages"></div>
 			<script>
+			
 				layui.use('laypage', function() {
 					var laypage = layui.laypage;
 
@@ -374,8 +420,8 @@ window.location.href="adminproduct?method=del&cpid="+cpid;
 				//修改按钮
 				var updateFrame = null;
 				function updateBut(e) {
-				var cpid=e.getAttribute("data-id");
-				alert(cpid);
+					var cpid = e.getAttribute("data-id");
+					alert(cpid);
 					layui.use('layer', function() {
 						var layer = layui.layer;
 
@@ -386,7 +432,8 @@ window.location.href="adminproduct?method=del&cpid="+cpid;
 							area : [ '70%', '60%' ],
 							scrollbar : false, //默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
 							maxmin : true,
-							content : 'adminproduct?method=zhezhao&cpid='+cpid
+							content : 'adminproduct?method=zhezhao&cpid='
+									+ cpid
 						});
 					});
 

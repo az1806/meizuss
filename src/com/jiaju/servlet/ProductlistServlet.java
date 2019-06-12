@@ -23,36 +23,37 @@ public class ProductlistServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
-		
+		response.setContentType("text/html;charset=UTF-8");	
 		 ProductClassDao pcd=new ProductClassDaoImpl();		
-		   List<ProductClass> pts=pcd.queryProductClass();
+		 
+		   List<ProductClass> pts=  pcd.queryProductClass();
+				
 			 request.setAttribute("productclass",pts);
 	
+			 
+			/**
+			 * 获取typeid 
+			 */
+			 
 		   int typeid;
 		   if(request.getParameter("typeid")==null){
-			   typeid=pts.get(0).getTypeid();		 
+			   typeid=1;	 
 		   }else{
 			   
 			   typeid=Integer.parseInt(request.getParameter("typeid"));
 			   
 		   }
-	   
+	 
 		/**
 		 * 根据产品类别进行显示;
 		 */
-		
+		 
          ProductlistDao productdao=new ProductlistDaoImpl();
         List<Product> plist=productdao.queryProduct(typeid);
+        
         request.setAttribute("plist",plist);
         
         
-        int cpid;
-        if(request.getParameter("cpid")!=null){
-  		   
-      	  cpid=Integer.parseInt(request.getParameter("cpid"));
-      	  
-  	   }	
         
         /**
          * 根据搜索内容进行显示
@@ -60,13 +61,23 @@ public class ProductlistServlet extends HttpServlet {
         
         
         ProductlistDao prosear=new ProductlistDaoImpl();
+        
 	       String name=request.getParameter("name"); 
-	       List<Product> names=prosear.queryProductSearch(name);   
+	       List<Product> names=prosear.queryProductSearchs(name);
 	       request.setAttribute("names",names);
-      
-	
-		
-		 
+	       
+	       
+	       
+	       int cpid;
+	       if(request.getParameter("cpid")!=null){
+	 		   
+	     	  cpid=Integer.parseInt(request.getParameter("cpid"));
+	     	  
+	 	   }
+	       else{
+	 		   cpid=1;
+	 	   }
+	       
 		request.getRequestDispatcher("productlist.jsp").forward(request, response);
 	}
 

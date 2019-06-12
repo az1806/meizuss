@@ -9,12 +9,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jiajiu.dao.HouTai_ProductlistDao;
+import com.jiajiu.dao.ProductClassDao;
 import com.jiajiu.dao.ProductlistDao;
 import com.jiajiu.dao.impl.HouTai_ProductlistDaoImpl;
+import com.jiajiu.dao.impl.ProductClassDaoImpl;
 import com.jiajiu.dao.impl.ProductlistDaoImpl;
 import com.jiaju.entity.Product;
+import com.jiaju.entity.ProductClass;
 
 public class HouTai_ProductlistServlet extends HttpServlet {
 
@@ -35,7 +39,17 @@ public class HouTai_ProductlistServlet extends HttpServlet {
 		List<Product> prolists=new ArrayList<Product>();		
 		prolists=htpldao.queryProduct();
 		request.setAttribute("houtaiproductlist", prolists);
-		request.getRequestDispatcher("/tgls/goodsManage/goods_list.jsp").forward(request, response);
+		
+		ProductClassDao pcdao=new ProductClassDaoImpl();
+		List<ProductClass> pclist=pcdao.queryProductClass();
+		request.setAttribute("pclist", pclist);
+		HttpSession session=request.getSession();
+
+			request.getRequestDispatcher("/tgls/goodsManage/goods_list.jsp").forward(request, response);
+		
+		
+		
+		
 		
 		
 	}

@@ -8,88 +8,53 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jiajiu.dao.ManagementDao;
 import com.jiajiu.dao.impl.ManagementDaoImpl;
 import com.jiaju.entity.Management;
+import com.jiaju.servlet.admin.BaseServlet;
+import com.jiaju.util.Result;
 
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends BaseServlet {
 
-	/**
-	 * The doGet method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	
+	public void login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
-	}
-
-	/**
-	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setContentType("text/html");
-		
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=utf-8");
-String name=request.getParameter("name");
+//	response.setContentType("text/html");
+//		
+//		request.setCharacterEncoding("UTF-8");
+//		response.setCharacterEncoding("UTF-8");
+//	response.setContentType("text/html;charset=UTF-8");
+		String name = request.getParameter("name");
 String pwd=request.getParameter("password");
 
+
 ManagementDao Mado=new ManagementDaoImpl();
-Management mage=(Management)Mado.selectMageByBame(name);
+Management mage=(Management)Mado.selectMageByBame(name,pwd);
+
+
+
 PrintWriter out=response.getWriter();
 
-if(mage!=null&&mage.getPwd().equals(pwd)){
+if(mage.getUsername().equals(name)&&mage.getPwd().equals(pwd)){
+	 HttpSession session = request.getSession();
+     session.setAttribute("name", name);//session存放数据
+    
+	out.print(Result.toClient(true,"你的到来，使我们蓬荜生辉"));
+}  else{ 
 	
-//	request.getRequestDispatcher("frame").forward(request, response);
-	response.sendRedirect("frame");
 	
+	if(mage.getPwd().equals(pwd)==false){
+	out.print(Result.toClient(false,"再检查一下密码吧，可能输错了哦"));
 	
-}else{
-	 out.println("<script>  alert('登录失败!');"+"location.href='login.html'; </script>");
+}else if(mage.getUsername().equals(name)==false){
+	out.print(Result.toClient(false, "我们这没有这个用户名哦"));
+	
 }
 
-		response.setContentType("text/html");
-	    
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+
+}
 	}
 
 }

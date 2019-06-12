@@ -8,14 +8,63 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.jiajiu.dao.CompanyDao;
 import com.jiajiu.dao.MemberDao;
+import com.jiajiu.dao.impl.CompanyDaoImpl;
 import com.jiajiu.dao.impl.MemberDaoImpl;
+import com.jiaju.entity.Company;
 import com.jiaju.entity.Member;
 import com.jiaju.util.Result;
+import com.jspsmart.upload.SmartUpload;
+import com.jspsmart.upload.SmartUploadException;
 
 public class MemberAdminServlet extends BaseServlet {
 
+	
+
+	/**
+	 * 上传图片
+	 */
+	
+	public void saveImg(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+	    PrintWriter out = response.getWriter();   
+	   //1.创建SmartUpload
+	    
+	   SmartUpload smart =new SmartUpload();
+	   //2.设置字符集
+	   smart.setCharset("UTF-8");
+	   //3.初始化
+	   smart.initialize(getServletConfig(),request,response);
+	  
+	   try {
+		   //4.上传文件
+		smart.upload();
+		//5.保存文件
+		smart.save("/images");
+		String filename=smart.getFiles().getFile(0).getFileName();
+		
+		out.println(Result.toClient(true,"images/"+filename));
+	
+	} catch (SmartUploadException e) {
+		// TODO Auto-generated catch block
+		out.print(Result.toClient(false, "图片保存失败"));
+		e.printStackTrace();
+	}
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	}
+	
+	
+	
+	
 	public void query(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -35,9 +84,12 @@ public class MemberAdminServlet extends BaseServlet {
 			Member mem=memberdao.ObjMember(memid);
 			request.setAttribute("mem", mem);
 			
+		    PrintWriter out = response.getWriter();   
+			
+		System.out.println("欢迎来到adminmember");
 			
 			
-	request.getRequestDispatcher("tgls/memberManage/memberlist.jsp").forward(request, response);
+	
 	
 		
 	}
@@ -59,11 +111,10 @@ public class MemberAdminServlet extends BaseServlet {
 		boolean judge=memberdao.AddMember(id, name, position, photo);
 		
                if(judge){		   
-            		List<Member> member=memberdao.queryMember();
-        			request.setAttribute("memlist", member);
-        			request.getRequestDispatcher("tgls/memberManage/memberlist.jsp").forward(request, response);
+            		
+            	   out.print("<script>alert('增加成功');"+"window.location.href=document.referrer;</script>");
 		}else{	
-			out.println(Result.toClient(false,"产品类别加入失败servlet"));
+			out.println(Result.toClient(false,"成员加入失败"));
 		}
 
 		
@@ -89,11 +140,7 @@ public class MemberAdminServlet extends BaseServlet {
 		boolean judge=memberdao.DelMember(id);
 		if(judge){
 			
-			out.println(Result.toClient(true, "让我们向这位朋友告别吧"));
-			List<Member> member=memberdao.queryMember();
-			request.setAttribute("memlist", member);
-			request.getRequestDispatcher("tgls/memberManage/memberlist.jsp").forward(request, response);
-			
+			 out.print("<script>window.location.href=document.referrer;</script>");
 			
 			
 		}else{

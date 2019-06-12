@@ -56,6 +56,9 @@ if(request.getParameter("newsid")!=null){
 	newsid=Integer.parseInt(request.getParameter("newsid"));
 	
 }
+/**
+ * 更多新闻
+ */
 
 NewsDao newsdaowucan=new NewsDaoImpl();
 List<News> newslistwucan=newsdaowucan.queryNewsDaowucan();       
@@ -65,6 +68,7 @@ request.setAttribute("newslistwucan",newslistwucan);
 		System.out.println("数据加载完成");	
 		
 		
+	
 		
 		
 		request.getRequestDispatcher("article_list.jsp").forward(request, response);

@@ -14,6 +14,12 @@ public interface ProductClassDao {
 	boolean addProductType(String typename);
 	
 	boolean delProductType(int typeid);
-	
-	
+	/**
+	 * 后台修改产品列表
+	 */
+	int updateProductClass(int typeid,String typename);
+	/**
+	 * 后台回显数据
+	 */
+	ProductClass queryPCById(int typeid);
 }

@@ -41,8 +41,8 @@ List<Member> memlist=(ArrayList<Member>) request.getAttribute("memlist");
 		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css">
 		<script src="framework/jquery-ui-1.10.4.min.js"></script>
 		<script src="framework/jquery.mousewheel.min.js"></script>
-		<script src="../../framework/jquery.mCustomScrollbar.min.js"></script>
-		<script src="../../framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+		<script src="framework/jquery.mCustomScrollbar.min.js"></script>
+		<script src="framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
 		<!-- 公共样式 结束 -->
 		
 		<style>.layui-table img {
@@ -94,7 +94,26 @@ border-collapse: collapse;
 
 </style>
 
-	
+	<style>
+.layui-table img {
+	max-width: none;
+	.
+	layui-form-label
+	{
+	width
+	:
+	100px;
+}
+
+.layui-input-block {
+	margin-left: 130px;
+}
+
+.layui-form {
+	margin-right: 30%;
+}
+}
+</style>
  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
   
 
@@ -193,12 +212,14 @@ border-collapse: collapse;
 				
 				
 				<tr>
-						<td><%=memlist.get(i).getId() %></td>
+						<td><%=i+1 %></td>
 						<td><%=memlist.get(i).getName() %></td>
 					
 						
 						<td><%=memlist.get(i).getPosition() %></td>
-						<td><img src="<%=memlist.get(i).getPhoto() %>" style="width:20px;height:20px"/></td>
+						<td><img src="<%=memlist.get(i).getPhoto() %>"  width="20"
+						         height="20" onmouseenter="imgBig(this)"
+					                      	onmouseleave="imgSmall(this)"/></td>
 						
 							
 						<td>
@@ -269,7 +290,30 @@ function regs(e){
 			c1.style.display="none";
 		c2.style.display="none";
 	}
+	
+	
+	
+	 var layer,upload;
+	 $(function(){
+	 layui.use(['layer','upload'],function(){
+	 
+	 layer=layui.layer;
+	 upload=layui.upload;
+	 upload.render({
+	 elem:'#test1',
+     url:'adminmember?method=saveImg', //服务器端接收文件数据的地址
+	 done:function(res){
+	 layer.alert(res.message);
+   $("#photo").val(res.message);
+	 }
 
+	 });
+
+	 });
+
+	 });
+   
+   
 </script>
 		</div>
 		<style type="text/css">
@@ -278,12 +322,15 @@ function regs(e){
 				width:230px;
 				height: 30px;
 			}
+			#img{
 			
+			
+			}
 			
 		</style>
 		<h2>实现添加</h2>
 		<div class="cBody">
-			<form id="addForm" class="layui-form">
+			<form id="addForm"  class="form-x">
 				
 				<div id="head">  </div> 
 				
@@ -316,6 +363,15 @@ function regs(e){
 						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>
+				
+				
+				
+<img id="imgFace" style="width:120px" /><br />        
+        <input type="file" name="file" class="layui-upload-file" />    <br />
+        <button type="button" class="layui-btn" id="test1">上传图片</button>
+				
+				
+				
 			</form>
 			
 			

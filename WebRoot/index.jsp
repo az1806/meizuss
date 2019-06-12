@@ -33,8 +33,17 @@ List<News> newslist=(List<News>) request.getAttribute("newslist");
 <script type="text/javascript" src="lib/amazeui/amazeui.min.js"></script>
 <script type="text/javascript" src="lib/raty/jquery.raty.js"></script>
 <script type="text/javascript" src="js/main.min.js?t=1"></script>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<style>
+
+</style>
+
+
 </head>
 <body>
+<jsp:include page="star.jsp"></jsp:include>
 <jsp:include page="/header"></jsp:include>
 
 
@@ -56,7 +65,7 @@ List<News> newslist=(List<News>) request.getAttribute("newslist");
             <main><strong> 
 					<%=com.getSyjs()%> 
 			</strong></main>
-            <a class="index-button" href="#">查看详情</a>
+            <a class="index-button" href="about">查看详情</a>
                 </div>
             </div>
         </section>
@@ -70,11 +79,11 @@ List<News> newslist=(List<News>) request.getAttribute("newslist");
         <ul>
 <% List<ProductClass> ptclass=(ArrayList<ProductClass>) request.getAttribute("pts")  ;
  
- for(int i=0;i<ptclass.size();i++){
+ for(int i=0;i<3;i++){
 
   %>
     
-            <li class="index-active"><a href="index?typeid=<%=ptclass.get(i).getTypeid()  %>"> <%=ptclass.get(i).getTypename() %>   </a></li>
+            <li class="index-active"><a href="index?typeid=<%=ptclass.get(i).getTypeid()  %>">  </a></li>
           
             
             <%} %>
@@ -90,7 +99,7 @@ List<News> newslist=(List<News>) request.getAttribute("newslist");
 <section class="index-margin-bottom">
     <div class="index-morecase">
         <span></span>
-        <a href="#">MORE &#62; &#62;</a>
+        <a href="productlist">MORE &#62; &#62;</a>
     </div>
     
     

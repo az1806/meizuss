@@ -26,6 +26,7 @@ public class CompanyAdminServlet extends BaseServlet {
 	 */
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		  System.out.println("已到达修改公司信息的servlet");
   int id= Integer.parseInt(request.getParameter("id"));
 		String companyname = java.net.URLDecoder.decode(request.getParameter("companyname"), "utf-8");
 		String syjs = java.net.URLDecoder.decode(request.getParameter("syjs"), "utf-8");
@@ -40,10 +41,10 @@ public class CompanyAdminServlet extends BaseServlet {
 		CompanyDao comdao=new CompanyDaoImpl();
 		int n=comdao.updateCompany(id, companyname, syjs, gyjs, culture, address, email, contact, imgzong, www);
 		if(n>0){
-		
+		  System.out.println("公司信息修改成功");
 			Company com=comdao.queryCompany();
 			request.setAttribute("com",com);
-			request.getRequestDispatcher("/tgls/companyManage/companylist.jsp").forward(request, response);
+			request.getRequestDispatcher("tgls/companyManage/companylist.jsp").forward(request, response);
 		}else{
 			
 			System.out.println("修改失败");
@@ -51,7 +52,7 @@ public class CompanyAdminServlet extends BaseServlet {
 		
 		
 	}
-
+	
 	/**
 	 * The doPost method of the servlet. <br>
 	 *

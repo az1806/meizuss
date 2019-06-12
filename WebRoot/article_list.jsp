@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    }
                    %>     
         <div class="article-more-btn">
-            <a href="article_list_more.jsp">MORE &#62; &#62;</a>
+            <a href="news_more">MORE &#62; &#62;</a>
         </div>
     </header>
 
@@ -69,16 +69,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <a href="article_list_content?newsid=<%=news.get(i).getNewsid() %>">
                        <h3><%=news.get(i).getTitle() %></h3>
                        
-                        <p><% 
-                        String content=news.get(i).getContent();
-                        if(content.length()>20){
-                        
-                        content.replace(content.substring(20),"......");
-
-                        
-                        
-                        }%>
-                        <%=content %>
+                        <p> 
+                       
+                        <%=news.get(i).getContent() %>
                         
                         </p>
                     </a>

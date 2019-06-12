@@ -33,12 +33,15 @@ public interface ProductlistDao {
 	
 	
 	
-	/**
+	/**后台搜索产品
 	 * 搜索产品
 	 */
-	List<Product> queryProductSearch(String name);
+	List<Product> queryProductSearch(Integer typeid,String name,String function,String content);
+	/**
+	 * 前台根据名字来查询
+	 */
 	
-	
+	List<Product> queryProductSearchs(String name);
 	/**
 	 * 添加一个商品
 	 */
@@ -50,15 +53,26 @@ int insertProduct(int typeid,String name,String function,Double price,String img
 	 * @param cpid
 	 * @return
 	 */
+
 	boolean delproduct(int cpid);
 	/**
 	 * 后台修改产品
 	 */
+	
 	int updateProduct(int cpid,int typeid,String name,String function,Double price,String img,String content);
+	
 	/**
 	 * 后台遮罩层根据cpid显示
 	 */
 	Product queryById(int cpid);
 
+	
+	
+	
+	
+	
+	
+	
+	Product queryProById(int cpid);
 	
 }

@@ -39,6 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script></head>
 
 <body>
+
 <jsp:include page="/header"></jsp:include>
 
 <section class="pro-list">
@@ -83,12 +84,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <ul>
       
       
-      <script> </script>
+   
         
- <%    if(request.getParameter("name")!=null){      
-         List<Product> psearch=(List<Product>)request.getAttribute("names"); 
+ <%    List<Product> psearch=(ArrayList<Product>) request.getAttribute("names"); 
+ 
+  if(request.getParameter("name")!=null){      
+        
        
-        for(int i=0;i<psearch.size();i++){%>      
+        for(int i=0;i<psearch.size();i++){ %>      
+        
           <li >
               <a href="productdetails?cpid=<%=psearch.get(i).getCpid() %>">
                 <div class="img-box">
@@ -99,6 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 </a>
             </li>
+            
+            
     <% }}else{  %>
         
         
@@ -120,8 +126,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 </a>
             </li>
-        
-       
         
         <%}
         } %>

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jiajiu.dao.NewsTypeDao;
 import com.jiajiu.dao.impl.NewsTypeDaoImpl;
@@ -34,9 +35,10 @@ public class HouTai_NewsTypeServlet extends HttpServlet {
 				
 				request.setAttribute("hnewstype",nts);
 				System.out.println("数据加载完成");
-				request.getRequestDispatcher("/tgls/newsManage/newsType.jsp").forward(request, response);
 			
-
+			
+					request.getRequestDispatcher("/tgls/newsManage/newsType.jsp").forward(request, response);
+				
 		
 		
 		

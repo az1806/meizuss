@@ -2,8 +2,10 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-List<News> newswucan=(ArrayList<News>) request.getAttribute("newslistwucan");
-  int newsid=Integer.parseInt(request.getParameter("newsid"));
+News news=(News) request.getAttribute("news");
+Integer newsid=Integer.parseInt(request.getParameter("newsid"));
+List<News> newslist=(List<News>) request.getAttribute("newslist");
+List<News> newslistid=(List<News>) request.getAttribute("newslistid");
 %>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -42,28 +44,16 @@ List<News> newswucan=(ArrayList<News>) request.getAttribute("newslistwucan");
     <header class="header-article-list">
         <div class="article-position">
         
-        <%
         
-        if(newsid==1){ %>
-             <span>无上一篇</span>
-              <span></span>
-        
-        
-        
-    <%    }else{%>
-           
-         <a  href="article_list_content?newsid=<%=newswucan.get(newsid-2).getNewsid() %>">
+    <%if(news.getNewsid()!=1){ %>
+    
+      <a  href="article_list_content?newsid=<%=newslist.get(newsid-2).getNewsid()%>">
               <span>上一篇</span>
-              <span><%=newswucan.get(newsid-2).getTitle() %>    </span>
+              <span><%=newslist.get(newsid-2).getTitle() %> </span>
           </a>
-     
-         
-         <%} %>
-  
-          
-          
-          
-          
+    
+   <% }  %>
+                       
         </div>
         
                    <ul >
@@ -79,29 +69,27 @@ List<News> newswucan=(ArrayList<News>) request.getAttribute("newslistwucan");
                 </ul>
         
     
-        <div class="article-more-btn">
-          
-            
-            <%if(newsid==newswucan.size()){ %>
-              
-                <span>无下篇</span>
-                <span></span>
-                <%} else{ %>
-                  <a href="article_list_content?newsid=<%=newswucan.get(newsid).getNewsid() %>">
-                
+        <div class="article-more-btn">        
+                 <%if(news.getNewsid()!=newslist.size()){%>
+                 
+                 <a href="article_list_content?newsid=<%=newslist.get(newsid).getNewsid()%>">
                   <span>下一篇</span>
-                <span><%=newswucan.get(newsid).getTitle() %></span>
+                <span><%=newslist.get(newsid).getTitle()%></span>
                  </a>
-                <%} %>
+                 
+                 
+                <% } %>
+                   
+             
            
         </div>
     </header>
 
     <section class="article-content">
           
-            <h4><%=newswucan.get(newsid-1).getTitle() %></h4>
+            <h4><%=news.getTitle()%></h4>
         <main>
-           <p><%=newswucan.get(newsid-1).getContent() %>    </p>
+           <p><%=news.getContent() %>    </p>
         </main>
     </section>
 </div>

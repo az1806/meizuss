@@ -8,6 +8,13 @@ public class Product {
 	private Double price;
 	private String img;
 	private String content;
+	private String typename;
+	public String getTypename() {
+		return typename;
+	}
+	public void setTypename(String typename) {
+		this.typename = typename;
+	}
 	public int getCpid() {
 		return cpid;
 	}
@@ -54,20 +61,26 @@ public class Product {
 		
 	}
 	
-	public Product(int cpid,int typeid,String name,String function,Double price,String img,String content){
-		this.cpid=cpid;
-		this.typeid=typeid;
-		this.name=name;
-		this.function=function;
-		this.price=price;
-		this.img=img;
-		this.content=content;
+	
+	public Product(int cpid, int typeid, String name, String function,
+			Double price, String img, String content, String typename) {
+		super();
+		this.cpid = cpid;
+		this.typeid = typeid;
+		this.name = name;
+		this.function = function;
+		this.price = price;
+		this.img = img;
+		this.content = content;
+		this.typename = typename;
 	}
 	@Override
 	public String toString() {
 		return "Product [cpid=" + cpid + ", typeid=" + typeid + ", name="
 				+ name + ", function=" + function + ", price=" + price
-				+ ", img=" + img + ", content=" + content + "]";
+				+ ", img=" + img + ", content=" + content + ", typename="
+				+ typename + "]";
 	}
+	
 	
 }
