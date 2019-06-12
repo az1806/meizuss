@@ -14,16 +14,16 @@ public class MessageDaoImpl implements MessageDao{
 	
 
 	@Override
-	public boolean insertMess(Integer lyid, String name, String phone,
+	public int insertMess(Integer lyid, String name, String phone,
 			String email, String content) {
 		// TODO Auto-generated method stub
 		int n=DBManager.updateSQL("insert messageinfo (name,phone,email,content) values('"+name+"','"+phone+"','"+email+"','"+content+"')");
 		if(n==1){
 			System.out.println("留言加入成功");
-			return true;
+			return n;
 		}
 		System.out.println("留言加入失败");
-		return false;
+		return 0;
 	}
 
 	@Override

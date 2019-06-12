@@ -57,30 +57,44 @@ public class NewsTypeServlet extends BaseServlet {
 	
 	}
 	
+	/**
+	 * 删除新闻类别根据typeid
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void del(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
+		  Integer typeid=Integer.parseInt(request.getParameter("typeid"));
+		NewsTypeDao newstypedao=new NewsTypeDaoImpl();
 		
-		NewsTypeDao newstypedao=new NewsTypeDaoImpl();	
-		Integer typeid=Integer.parseInt(request.getParameter("typeid"));
-		boolean judge=newstypedao.delNewsType(typeid);
-		if(judge){
+      int judge=newstypedao.delNewsType(typeid);	
+	        
+		
+			if(judge>0){
+//				 List<NewsType> newstype=newstypedao.queryNewsTypes();
+//		 			request.setAttribute("hnewstype", newstype);
+//		 			request.getRequestDispatcher("tgls/newsManage/newsType.jsp").forward(request, response);
+		
 			
-			
-//		List<NewsType> newstype=newstypedao.queryNewsTypes();
-//		request.setAttribute("hnewstype", newstype);
-//		request.getRequestDispatcher("tgls/newsManage/newsType.jsp").forward(request, response);
-//			
-	out.print("<script>window.location.href=document.referrer;</script>");
-			
-		}
-		out.flush();
+				//返回到上个界面并刷新
+				out.print("<script>window.location.href=document.referrer;</script>");		
+					}		
+	  	out.flush();
 		out.close();
-	}
+      	}
 
-	
+	/**
+	 * 增加一个新闻类别
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void add(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -92,13 +106,13 @@ public class NewsTypeServlet extends BaseServlet {
 		
 		String typename=request.getParameter("typename");
 		
-         boolean judge=newstypedao.addNewsType(typename);
+      int judge=newstypedao.addNewsType(typename);
          
-         if(judge){	 
+         if(judge>0){	 
 //        	 List<NewsType> newstype=newstypedao.queryNewsTypes();
 // 			request.setAttribute("hnewstype", newstype);
 // 			request.getRequestDispatcher("tgls/newsManage/newsType.jsp").forward(request, response);
-// 
+ 
         		out.print("<script>alert('增加成功');"+"window.location.href=document.referrer;</script>");
          }
             	  

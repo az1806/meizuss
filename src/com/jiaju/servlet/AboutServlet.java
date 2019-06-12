@@ -24,15 +24,21 @@ public class AboutServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		/**
+		 * 获取公司信息
+		 */
 		CompanyDao comDao = new CompanyDaoImpl();
 		Company com = comDao.queryCompany();
 		request.setAttribute("company", com);
 		
-		
+		/**
+		 * 获取成员信息
+		 */
 		
 		MemberDao memdao=new MemberDaoImpl();
-		List<Member> mems=new ArrayList();
-		mems=memdao.queryMember();
+		
+		List<Member> mems=memdao.queryMember();
+		
 		request.setAttribute("mems",mems);
 		
 		request.getRequestDispatcher("about.jsp").forward(request, response);

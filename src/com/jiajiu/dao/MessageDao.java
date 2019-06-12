@@ -15,7 +15,7 @@ public interface MessageDao {
 	 * @param content
 	 * @return
 	 */
-	boolean insertMess(Integer lyid,String name,String phone ,String email,String content);
+	int insertMess(Integer lyid,String name,String phone ,String email,String content);
 	/**
 	 * 后台显示留言内容
 	 * @return

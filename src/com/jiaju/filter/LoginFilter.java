@@ -40,6 +40,7 @@ public class LoginFilter implements Filter{
 		if(session.getAttribute("name")!=null){
 			chain.doFilter(request, response);//放行
 			
+			
 		}else if(isMatch==false||path.equals("/jiaju/login")||path.equals("/jiaju/login.jsp")||path.endsWith(".css")||path.endsWith(".js")||path.endsWith(".jsp")||path.endsWith(".jpg")){
 			chain.doFilter(request, response);//放行
 		

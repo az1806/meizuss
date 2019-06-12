@@ -59,7 +59,6 @@ List<Message> Searlist=(List<Message>) request.getAttribute("Searlist");
 function updateState(e){
 
 var id=e.getAttribute("data-id");
-alert(id);
 var state=e.getAttribute("data-name");
 alert(state);
 window.location.href="adminmessage?method=update&lyid="+id+"&state="+state+"";

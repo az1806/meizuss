@@ -40,29 +40,29 @@ public class NewsTypeDaoImpl implements NewsTypeDao {
 	}
 
 	@Override
-	public boolean delNewsType(int typeid) {
+	public int delNewsType(int typeid) {
 		int n = DBManager.updateSQL("delete from newstypeinfo where typeid="
 				+ typeid);
 		if (n == 1) {
 			System.out.println("该类别删除成功");
-			return true;
+			return n;
 		} else {
 			System.out.println("该类别删除失败");
-			return false;
+			return 0;
 		}
 	}
 
 	@Override
-	public boolean addNewsType(String typename) {
+	public int addNewsType(String typename) {
 		int n = DBManager
 				.updateSQL("insert into newstypeinfo (typename) values('"
 						+ typename + "')");
 		if (n == 1) {
 			System.out.println("哈呀，加上了一个类别啊");
-			return true;
+			return n;
 		}
 		System.out.println("怎么说，没把我加上吧");
-		return false;
+		return 0;
 	}
 
 	@Override

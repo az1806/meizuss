@@ -28,9 +28,22 @@
 <script src="js/hanzi-writer.min.js"></script>
 <script src="js/polyfill.min.js"></script>
 
-</head>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script></head>
+<script type="text/javascript">
+function find(){
+alert("哈哈");
+}
+</script>
+<style type="text/css">
+
+#finds{
+position: absolute;
+left:1200px;
+
+}
 
 
+</style>
   <body><% Company com = (Company) request.getAttribute("company"); %>
    <header> 
     <div class="header-top">
@@ -47,9 +60,12 @@
             </div>
 
             <div class="search-box div-inline">
-                <div class="input-box"><input type="text" name="" placeholder="             请输入关键字"></div>
-                <div class="search-botton"></div>
+              <!--    <div class="input-box"><input type="text" name="" placeholder="请输入关键字"></div>
+                <div class="search-botton" onclick="find()"></div> -->
+                
+             
             </div>
+               <div id="finds"><input type="text" ><input type="button" value="搜索" id="find">   </div>
         </div>
     </div>
     <div class="header-nav">

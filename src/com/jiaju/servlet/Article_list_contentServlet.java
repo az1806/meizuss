@@ -22,13 +22,17 @@ public class Article_list_contentServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-	
+	 /**
+	  * 获取新闻类别
+	  */
 		NewsTypeDao	nsdao=new NewsTypeDaoImpl();
 		
 		List <NewsType> nts=(List<NewsType>) nsdao.queryNewsTypes();
 				
 				request.setAttribute("newstype",nts);
-				System.out.println("数据加载完成");
+				
+				
+				
 				
 				
 				/**
@@ -39,25 +43,37 @@ public class Article_list_contentServlet extends HttpServlet {
 				     News news=ndao.queryNewsByID(newsid);
 				request.setAttribute("news", news);
 				
-				
+				/**
+				 * 获取新闻列表
+				 */
 				
 				List<News> newslist=ndao.queryNewsDaowucan();
 				request.setAttribute("newslist", newslist);	
 				
-				
+				/**
+				 * 因为是根据typeid来查产品
+				 * 但是第一次进入页面获取不到typeid
+				 * 所以需要先进行赋值
+				 * 
+				 */
 				int typeid;
 				if(request.getParameter("typeid")==null){
-					typeid=nts.get(0).getTypeid();
+					typeid=1;
 				
 				}else{
 					
 					typeid=Integer.parseInt(request.getParameter("typeid"));
 				}
-
+				/**
+				 * 根据typeid来查新闻列表
+				 */
 				
-				NewsDao newsdao=new NewsDaoImpl();
+		      NewsDao newsdao=new NewsDaoImpl();
 				List<News> newslistid=newsdao.queryNewsDao(typeid);       
 				request.setAttribute("newslistid",newslistid);
+				
+				
+				
 				
 				request.getRequestDispatcher("article_list_content.jsp").forward(request, response);
 			

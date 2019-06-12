@@ -90,7 +90,9 @@ public class Productdetails extends HttpServlet {
        */
 	  int  cpid=Integer.parseInt(request.getParameter("cpid"));
       ProductlistDao productdaos=new ProductlistDaoImpl();
+      
       Product products=productdaos.queryProById(cpid);
+      
       request.setAttribute("products",products);
     
       

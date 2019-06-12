@@ -14,8 +14,12 @@ public interface NewsTypeDao {
  * @param typeid
  * @return
  */
-	boolean delNewsType(int typeid);
+	int delNewsType(int typeid);
 	
+	/**
+	 * 显示所有新闻分类列表
+	 * @return
+	 */
 	List<NewsType> queryNewsTypes();
 	
 	
@@ -25,7 +29,7 @@ public interface NewsTypeDao {
 	 * @param 类别名称
 	 * @return
 	 */
-	boolean addNewsType(String typename);
+	int addNewsType(String typename);
 	/**
 	 * 根据typeid显示类别名称
 	 * @param typeid

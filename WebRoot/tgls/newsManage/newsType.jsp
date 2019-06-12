@@ -101,7 +101,7 @@ alert("输入框不能为空");
 				var updateFrame = null;
 				function updateBut(e) {
 				  var typeid=e.getAttribute("data-id");
-				 
+				
 					layui.use('layer', function() {
 						var layer = layui.layer;
 
@@ -157,7 +157,7 @@ alert("输入框不能为空");
 						
 							<a  class="layui-btn layui-btn-xs"  href="adminnewstype?method=del&typeid=<%=nts.get(i).getTypeid()  %>" onclick="return confirm('你确定要删除嘛')">删除 </a>
 							<button class="layui-btn layui-btn-xs" onclick="updateBut(this)" data-id="<%=nts.get(i).getTypeid() %>" type="button">修改</button>
-						</td>
+						</td>                                                                  
 					</tr>
    
                      <%

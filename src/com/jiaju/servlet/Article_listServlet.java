@@ -23,14 +23,23 @@ public class Article_listServlet extends HttpServlet {
 		
 		
 		
-		
+		/**
+		 * 获取新闻分类列表
+		 */
 		NewsTypeDao	nsdao=new NewsTypeDaoImpl();
-		
        List <NewsType> nts=(List<NewsType>) nsdao.queryNewsTypes();
-		
+       request.setAttribute("newstype",nts);
+       
+       
+       
+       
+       /**
+        * 获取typeid
+        */
        int typeid;
+       
 		if(request.getParameter("typeid")==null){
-			typeid=nts.get(0).getTypeid();
+			typeid=1;
 		
 		}else{
 			
@@ -43,8 +52,10 @@ public class Article_listServlet extends HttpServlet {
  */
 		
 NewsDao newsdao=new NewsDaoImpl();
+
 List<News> newslist=newsdao.queryNewsDao(typeid);       
 request.setAttribute("newslist",newslist);
+
 
 /**
  * 不带参数显示新闻内容的列表
@@ -64,7 +75,7 @@ NewsDao newsdaowucan=new NewsDaoImpl();
 List<News> newslistwucan=newsdaowucan.queryNewsDaowucan();       
 request.setAttribute("newslistwucan",newslistwucan);
 
-		request.setAttribute("newstype",nts);
+		
 		System.out.println("数据加载完成");	
 		
 		

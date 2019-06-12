@@ -36,13 +36,11 @@ public class ProductTypeAdmin extends BaseServlet {
 		ProductClassDao  pcd=new ProductClassDaoImpl();
 	   boolean  judge=	pcd.addProductType(typename);
 		if(judge){	
-			
 //			ProductClassDao proclassdao=new ProductClassDaoImpl();
 //			List<ProductClass> proclasslist=proclassdao.queryProductClass();
 //			request.setAttribute("hproductclass",proclasslist);
 //			
 //			request.getRequestDispatcher("tgls/goodsManage/goodsType_list.jsp").forward(request, response);
-	
 			out.print("<script>alert('增加成功');"+"window.location.href=document.referrer;</script>");
 			
 		}

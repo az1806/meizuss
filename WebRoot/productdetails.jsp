@@ -78,7 +78,7 @@ Product products=(Product) request.getAttribute("products");
         </header>
         <main>
             <div class="pro-right-left">
-                <div class="pro-details-img"><img src="images/proimg.jpg"></div>
+                <div class="pro-details-img"> <img src="<%=products.getImg() %>" /></div>
 				
                 <div class="pro-detalis-carousel">
                     <div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth: 112, itemMargin: 4,move:5,  controlNav: false ,  slideshow: true}">
@@ -86,12 +86,12 @@ Product products=(Product) request.getAttribute("products");
                       
               
                             <li>    <img src="<%=products.getImg() %>" /></li>
-                            <li><img src="images/team1.png" /></li>
+                      <!--      <li><img src="images/team1.png" /></li>
                             <li><img src="images/team2.png" /></li>
                             <li><img src="images/team3.png" /></li>
                             <li><img src="images/team4.png" /></li>
                             <li><img src="images/procarousel.png" /></li>
-                            <li><img src="images/procarousel.png" /></li>
+                            <li><img src="images/procarousel.png" /></li>-->  
                             
                             
                             
@@ -126,7 +126,7 @@ Product products=(Product) request.getAttribute("products");
                 
             </div>
 
-            <div class="am-tabs pro-tabs" data-am-tabs>
+    <!--        <div class="am-tabs pro-tabs" data-am-tabs>
                 <ul class="am-tabs-nav am-nav am-nav-tabs">
                     <li class="am-active"><a href="#tab1">详细说明1</a></li>
                     <li><a href="#tab2">详细说明2</a></li>
@@ -174,7 +174,7 @@ Product products=(Product) request.getAttribute("products");
                     <div class="am-tab-panel" id="tab3">3</div>
                     <div class="am-tab-panel" id="tab4">4</div>
                 </div>
-            </div>
+            </div>  --> 
         </main>
     </aside>
 

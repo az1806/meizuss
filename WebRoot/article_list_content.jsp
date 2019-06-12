@@ -45,7 +45,10 @@ List<News> newslistid=(List<News>) request.getAttribute("newslistid");
         <div class="article-position">
         
         
-    <%if(news.getNewsid()!=1){ %>
+    <%
+   
+    
+    if(newsid>1){ %>
     
       <a  href="article_list_content?newsid=<%=newslist.get(newsid-2).getNewsid()%>">
               <span>上一篇</span>
@@ -70,7 +73,7 @@ List<News> newslistid=(List<News>) request.getAttribute("newslistid");
         
     
         <div class="article-more-btn">        
-                 <%if(news.getNewsid()!=newslist.size()){%>
+                 <%if(newsid<newslist.size()){%>
                  
                  <a href="article_list_content?newsid=<%=newslist.get(newsid).getNewsid()%>">
                   <span>下一篇</span>

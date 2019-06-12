@@ -44,8 +44,8 @@ public class MessageServlet extends HttpServlet {
 		
 		
 		
-	 boolean ly=msdo.insertMess(lyid, usernamez, phonez, emailz, contentz);
-	 if(ly==true){
+	 int ly=msdo.insertMess(lyid, usernamez, phonez, emailz, contentz);
+	 if(ly>0){
 		 System.out.println("留言插入成功");
 		 out.println("<script>  alert('留言成功!');"+"location.href='message.jsp'; </script>");
 		 

@@ -24,6 +24,10 @@ public class HeaderServlet extends HttpServlet {
 		CompanyDao comDao = new CompanyDaoImpl();
 		Company com = comDao.queryCompany();
 		request.setAttribute("company", com);
+		
+		
+		
+		
 		/**
 		  * »ñÈ¡ÂÖ²¥Í¼
 		  */
@@ -34,6 +38,7 @@ public class HeaderServlet extends HttpServlet {
 		 
 		 
 		 request.setAttribute("banlist",banlist);
+		 
 		request.getRequestDispatcher("header.jsp").include(request, response);
 	}
 

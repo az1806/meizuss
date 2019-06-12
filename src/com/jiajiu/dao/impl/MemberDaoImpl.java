@@ -19,6 +19,7 @@ public class MemberDaoImpl implements MemberDao{
 		
 		try {
 			while(rs.next()){
+				
 				Member member=new Member();
 				member.setId(rs.getInt(1));
 				member.setName(rs.getString(2));

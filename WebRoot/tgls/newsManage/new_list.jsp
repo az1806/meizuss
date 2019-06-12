@@ -190,8 +190,8 @@ List<News> searchnews=(ArrayList<News>) request.getAttribute("searchnews");
 				%>
 				<tr>
 
-
-					<td><%=i+1%></td>
+                  <%=i+1%>
+					<td><%=searchnews.get(i).getNewsid()%></td>
 					<td><%=searchnews.get(i).getTypeid()%></td>
 
 
@@ -235,8 +235,9 @@ List<News> searchnews=(ArrayList<News>) request.getAttribute("searchnews");
 				%>
 				<tr>
 
-
-					<td><%=i+1%></td>
+                      
+                       
+					<td><%=newslist.get(i).getNewsid()%></td>
 					<td><%=newslist.get(i).getTypeid()%></td>
 
 
@@ -271,7 +272,7 @@ List<News> searchnews=(ArrayList<News>) request.getAttribute("searchnews");
 
 			<form>
 				<table>
-
+                    
 					<tr>
 
 						<td>资讯类别</td>
