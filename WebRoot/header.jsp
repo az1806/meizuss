@@ -6,7 +6,7 @@
 			+ path + "/";
 			
 			List<Banners> banlist=(ArrayList<Banners>) request.getAttribute("banlist");
-			     
+			 
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -65,7 +65,12 @@ left:1200px;
                 
              
             </div>
-               <div id="finds"><input type="text" ><input type="button" value="搜索" id="find">   </div>
+               <div id="finds"> <form action="productlist" method="get">
+               
+                    <input type="text"  name="name" id="search">
+              
+                <input type="submit" value="搜索" style="color:black;font-size: 18px;"> 
+                </form>  </div>
         </div>
     </div>
     <div class="header-nav">
@@ -92,19 +97,29 @@ left:1200px;
         
         
     </div>
+<script>
+function  details(e){
+
+var cpid=e.getAttribute("data-id");
+window.location.href="productdetails?cpid="+cpid;
+
+}
+
+
+</script>
 <div class="am-slider am-slider-default" data-am-flexslider="{playAfterPaused: 8000}">
  
     <ul class="am-slides">
   
    <%for(int i=0;i<banlist.size();i++){ %>
      
-        <li><img src=<%=banlist.get(i).getBanner() %> alt="" ></li>
+        <li><img src=<%=banlist.get(i).getBanner() %> alt="" data-id="<%=banlist.get(i).getCpid()%>" onclick="details(this)"></li>
    
         <%} %>
         
     </ul>
     
-</div>
+</div></a>
 </header>
 <script>
   

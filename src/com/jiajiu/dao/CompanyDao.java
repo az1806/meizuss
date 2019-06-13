@@ -20,7 +20,7 @@ public interface CompanyDao {
 	 * @param www
 	 * @return
 	 */
-	int updateCompany(int id,String companyname,String syjs,String gyjs,String culture,String address,String email,String contact,String imgzong,String www);
+	int updateCompany(int id,String companyname,String syjs,String gyjs,String culture,String address,String email,String contact,String imgzong,String www,String logo);
 	
 	//返回参数，值
 }

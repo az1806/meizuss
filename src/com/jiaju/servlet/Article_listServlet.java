@@ -27,7 +27,9 @@ public class Article_listServlet extends HttpServlet {
 		 * 获取新闻分类列表
 		 */
 		NewsTypeDao	nsdao=new NewsTypeDaoImpl();
+		
        List <NewsType> nts=(List<NewsType>) nsdao.queryNewsTypes();
+       
        request.setAttribute("newstype",nts);
        
        

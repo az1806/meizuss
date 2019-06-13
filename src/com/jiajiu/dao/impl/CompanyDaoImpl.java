@@ -40,11 +40,11 @@ public class CompanyDaoImpl implements CompanyDao {
 	@Override
 	public int updateCompany(int id, String companyname, String syjs,
 			String gyjs, String culture, String address, String email,
-			String contact, String imgzong, String www) {
+			String contact, String imgzong, String www,String logo) {
 		// TODO Auto-generated method stub
 		int n=DBManager.updateSQL("update companyinfo set companyname='"+companyname+"' ,syjs='"+syjs+"',gyjs='"+gyjs+"',culture='"+culture+"'" +
 						",address='"+address+"',email='"+email+"',contact='"+contact+"'" +
-								",imgzong='"+imgzong+"',www='"+www+"'where companyid="+id);
+								",imgzong='"+imgzong+"',www='"+www+"',logo='"+logo+"' where companyid="+id);
 		if(n>0){
 			
 			return n;

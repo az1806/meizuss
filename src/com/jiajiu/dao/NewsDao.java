@@ -9,6 +9,9 @@ import java.util.List;
 import com.jiaju.entity.News;
 
 public interface NewsDao {
+	
+	
+	
 	/**
 	 * 通过news列表typeid进行类别切换
 	 * @param typeid

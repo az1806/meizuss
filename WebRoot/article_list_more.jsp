@@ -66,13 +66,7 @@ List<News> newslist=(ArrayList<News>) request.getAttribute("newslistwucan");
 
     </section>
     <div class="article_list_more_pages">
-        <ul>
-            <li><a>上一页</a></li>
-            <li class="article-current"><a>1</a></li>
-            <li><a>2</a></li>
-            <li><a>3</a></li>
-            <li><a>下一页</a></li>
-        </ul>
+       
     </div>
 </div>
 <jsp:include page="/foot"></jsp:include>

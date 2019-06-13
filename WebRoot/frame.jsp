@@ -95,10 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            </li>      
 		             <li>
 		                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>公司成员管理<i class="iconfont icon-dajiantouyou right"></i></a>
-		                <dl>
-	
+		                <dl>	
 		                	<dt><a href="javascript:void(0)" onclick="menuCAClick('houtaimembers',this)">成员</a></dt>
-		                	
 		                </dl>
 		            </li>
 		            <li>
@@ -132,8 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img class="jt" src="images/top_jt.png"/>
 				<div class="topMenu">
 					<ul>
-						<li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-yonghu1"></i>管理员</a></li>
-						<li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-xiugaimima"></i>修改密码</a></li>
+						
 						<li><a href="zhuxiao"><i class="iconfont icon-084tuichu"></i>注销</a></li>
 					</ul>
 				</div>

@@ -3,9 +3,9 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 News news=(News) request.getAttribute("news");
-Integer newsid=Integer.parseInt(request.getParameter("newsid"));
 List<News> newslist=(List<News>) request.getAttribute("newslist");
-List<News> newslistid=(List<News>) request.getAttribute("newslistid");
+
+
 %>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -45,46 +45,45 @@ List<News> newslistid=(List<News>) request.getAttribute("newslistid");
         <div class="article-position">
         
         
-    <%
-   
+    <%if(news.getNewsid()>1){ %>
     
-    if(newsid>1){ %>
-    
-      <a  href="article_list_content?newsid=<%=newslist.get(newsid-2).getNewsid()%>">
+       <a  href="article_list_content?newsid=<%=newslist.get(news.getNewsid()-2).getNewsid()%>">
               <span>上一篇</span>
-              <span><%=newslist.get(newsid-2).getTitle() %> </span>
+              <span><%=newslist.get(news.getNewsid()-2).getTitle() %> </span>
           </a>
     
-   <% }  %>
-                       
+    
+   <% } %>
+   
+    
+           
         </div>
         
                    <ul >
-                   <%    List<NewsType> nts = ( List<NewsType> ) request.getAttribute("newstype");
+                  <%    List<NewsType> nts = ( List<NewsType> ) request.getAttribute("newstype");
                 
                    for (int i=0;i<nts.size();i++) {
                      %>
-                    <li class="article-on"><a href="article_list"><%=nts.get(i).getTypename() %></a></li>
+                    <li class="article-on"><a href="article_list?typeid=<%=nts.get(i).getTypeid() %>"><%=nts.get(i).getTypename() %></a></li>
                      <%
                    }
-                   %>
+                   %>     
                    
                 </ul>
-        
-    
+           
         <div class="article-more-btn">        
-                 <%if(newsid<newslist.size()){%>
-                 
-                 <a href="article_list_content?newsid=<%=newslist.get(newsid).getNewsid()%>">
+              
+                 <%if(news.getNewsid()<newslist.size()){ %>
+                  <a href="article_list_content?newsid=<%=newslist.get(news.getNewsid()).getNewsid()%>">
                   <span>下一篇</span>
-                <span><%=newslist.get(newsid).getTitle()%></span>
+                <span><%=newslist.get(news.getNewsid()).getTitle() %></span>
                  </a>
                  
                  
-                <% } %>
-                   
-             
-           
+                 
+               <%   } %>
+                
+    
         </div>
     </header>
 

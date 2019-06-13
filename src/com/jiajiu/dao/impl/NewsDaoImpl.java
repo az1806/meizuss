@@ -13,6 +13,7 @@ import com.jiaju.util.DBManager;
 
 public class NewsDaoImpl implements NewsDao {
 
+	
 	public List<News> queryNewsDao(int typeid) {
 
 		List<News> ns = new ArrayList<News>();
@@ -27,12 +28,7 @@ public class NewsDaoImpl implements NewsDao {
 				n.setTypeid(rs.getInt(2));
 				n.setTitle(rs.getString(3));
 				n.setContent(rs.getString(4));
-				n.setTime(rs.getDate(5));
-				// n.setNewsid(rs.getInt(1));
-				// n.setTypeid(rs.getInt(2));
-				// n.setTitle(rs.getString(3));
-				// n.setContent(rs.getString(4));
-				// n.setTime(rs.getDate(5));
+				n.setTime(rs.getDate(5));			
 				ns.add(n);
 			}
 		} catch (SQLException e) {
@@ -46,7 +42,7 @@ public class NewsDaoImpl implements NewsDao {
 	public List<News> queryNewsDaowucan() {
 		List<News> ns = new ArrayList<News>();
 
-		ResultSet rs = DBManager.querySQL("select * from newsinfo ");
+		ResultSet rs = DBManager.querySQL("select * from newsinfo");
 
 		try {
 			while (rs.next()) {
@@ -56,7 +52,6 @@ public class NewsDaoImpl implements NewsDao {
 				n.setTitle(rs.getString(3));
 				n.setContent(rs.getString(4));
 				n.setTime(rs.getDate(5));
-
 				ns.add(n);
 			}
 		} catch (SQLException e) {
@@ -213,5 +208,7 @@ public class NewsDaoImpl implements NewsDao {
 
 		return null;
 	}
+
+
 
 }

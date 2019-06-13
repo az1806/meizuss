@@ -75,7 +75,31 @@ Member mem=(Member)request.getAttribute("mem");
 
 		
 		}
-		
+		/*
+		上传图片
+		*/
+		var layer, upload;
+				$(function() {
+					layui.use([ 'layer', 'upload' ], function() {
+
+						upload = layui.upload;
+						layer = layui.layer;
+						upload.render({
+
+							elem : '#test1',
+							url : 'adminproduct?method=saveImg', //服务器端接收文件数据的地址
+							done : function(res) {
+
+								layer.alert(res.message);
+								$("#photo").val(res.message);
+
+							}
+
+						});
+
+					});
+
+				})
 		
 		
 		
@@ -123,7 +147,10 @@ Member mem=(Member)request.getAttribute("mem");
 						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>
-	
+	 图片：<img
+					id="imgFace" style="width:120px" /><br /> <input type="file"
+					name="file" class="layui-upload-file" /> <br />
+				<button type="button" class="layui-btn" id="test1">上传图片</button>
 			</form>
 			
 			

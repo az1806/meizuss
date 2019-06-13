@@ -61,6 +61,7 @@ NewsType newstype=(NewsType) request.getAttribute("newstype");
 			function update(){
 			var typeid=<%=newstype.getTypeid()%>
 			var typename=document.getElementById("typename").value;
+
 			window.location.href="adminnewstype?method=update&typeid="+typeid+"&typename="+typename+"";
 			}
 			

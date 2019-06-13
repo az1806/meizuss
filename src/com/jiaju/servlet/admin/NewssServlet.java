@@ -30,6 +30,9 @@ public class NewssServlet extends BaseServlet {
 	public void search(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		/**
+		 * 新闻分类
+		 */
 		NewsTypeDao newstypedao=new NewsTypeDaoImpl();
 		List<NewsType> newstype=newstypedao.queryNewsTypes();
 		request.setAttribute("newstype", newstype);
@@ -48,6 +51,7 @@ public class NewssServlet extends BaseServlet {
 		NewsDao newsdao=new NewsDaoImpl();
 		
 		List<News> searchnews=newsdao.conditionquery(typeid, title, content);
+		
 		
 		request.setAttribute("searchnews",searchnews);
 		request.getRequestDispatcher("tgls/newsManage/new_list.jsp").forward(request, response);
@@ -108,7 +112,9 @@ public class NewssServlet extends BaseServlet {
 		
       NewsDao newsdao=new NewsDaoImpl();
       Integer newsid=Integer.parseInt(request.getParameter("newsid"));
+      
       News news=newsdao.queryNewsByID(newsid);
+      
       request.setAttribute("news", news);
 	 if(news!=null){
 		 

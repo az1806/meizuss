@@ -345,7 +345,7 @@ List<News> searchnews=(ArrayList<News>) request.getAttribute("searchnews");
 
 			function updateBut(e) {
 				var newsid = e.getAttribute("data-id");
-				alert(newsid);
+			
 				layui.use('layer', function() {
 					var layer = layui.layer;
 

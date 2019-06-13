@@ -63,8 +63,11 @@ public class ProductlistServlet extends HttpServlet {
         ProductlistDao prosear=new ProductlistDaoImpl();
         
 	       String name=request.getParameter("name"); 
+	       
 	       List<Product> names=prosear.queryProductSearchs(name);
+	       
 	       request.setAttribute("names",names);
+	       
 	       
 	       
 	       

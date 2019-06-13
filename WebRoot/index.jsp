@@ -139,7 +139,7 @@ List<News> newslist=(List<News>) request.getAttribute("newslist");
 <section class="index-margin-bottom">
     <div class="index-morecase">
         <span></span>
-        <a href="#">MORE &#62; &#62;</a>
+        <a href="news_more">MORE &#62; &#62;</a>
     </div>
     <div class="index-content">
 

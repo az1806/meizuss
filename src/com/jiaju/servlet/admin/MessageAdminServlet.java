@@ -21,7 +21,9 @@ public class MessageAdminServlet extends BaseServlet {
 
 		MessageDao messdao = new MessageDaoImpl();
 		String searchstate = request.getParameter("searchstate");
+		
 		List<Message> Searlist = messdao.queryMessageByState(searchstate);
+		
 
 		request.setAttribute("Searlist", Searlist);
 		request.getRequestDispatcher("/tgls/messageManage/message_list.jsp")

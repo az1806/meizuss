@@ -206,7 +206,7 @@ window.location.href="adminmessage?method=search&searchstate="+searchstate+"";
 					
 			
 			<script>
-				layui.use('laypage', function() {
+		/*		layui.use('laypage', function() {
 					var laypage = layui.laypage;
 				
 					//总页数大于页码总数
@@ -218,7 +218,7 @@ window.location.href="adminmessage?method=search&searchstate="+searchstate+"";
 //					      console.log(obj)
 					    }
 					});
-				});
+				}); */
 //修改规格
 function specificationsBut() {
 	layui.use('layer', function() {

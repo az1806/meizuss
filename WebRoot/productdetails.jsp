@@ -73,8 +73,8 @@ Product products=(Product) request.getAttribute("products");
     <aside class="pro-rightsidebar">
         <header>
             <p></p>
-            <span>椅子系列</span>
-            <div class="product-nav"><a href="index.html">首页 </a>&#62;<a href="#">产品展示</a>&#62;<a>XX椅子</a></div>
+           
+            <div class="product-nav"><a href="index">首页 </a>&#62;<a href="/jiaju/productlist">产品展示</a>&#62;</div>
         </header>
         <main>
             <div class="pro-right-left">

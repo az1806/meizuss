@@ -156,16 +156,10 @@ border-collapse: collapse;
 	
 		}
 
-			function del(e){
-		 var a=	confirm("你确定要删除嘛");
-		 var id=e.getAttribute("data-id");
-		if(a){
-		window.location.href="adminmember?method=del&id="+id;
-	
-		}
+			
 		
 			
-			} 
+			
 			
 			
 			//修改按钮
@@ -228,7 +222,11 @@ border-collapse: collapse;
 							 <button class="layui-btn layui-btn-xs" onclick="updateBut(this)" data-id="<%=memlist.get(i).getId() %>">修改</button>
 						     
 							
-							<button onclick="del(this)" class="layui-btn layui-btn-xs" data-id="<%=memlist.get(i).getId() %>"> 删除</button>
+							
+							
+							
+							
+							<a href="adminmember?method=del&id=<%=memlist.get(i).getId() %>" onclick="return confirm('你确定要删除嘛')" class="layui-btn layui-btn-xs" > 删除</a>
 						</td>
 					</tr>
 				
@@ -251,47 +249,12 @@ border-collapse: collapse;
 		          
 				
 				
-				layui.use('laypage', function() {
-					var laypage = layui.laypage;
 				
-					//总页数大于页码总数
-					laypage.render({
-					    elem: 'pages'
-					    ,count: 100
-					    ,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
-					    ,jump: function(obj){
-//					      console.log(obj)
-					    }
-					});
-				});
 
 /*  
 遮罩层函数
  */
 
-function regs(e){
-	           var memid=e.getAttribute("data-id");
-                 alert(memid);
-		var c1=document.getElementById("zzc_cover");
-		c1.style.width=document.documentElement.scrollWidth+"px";
-		c1.style.height=document.documentElement.scrollHeight+"px";
-		c1.style.display="block";
-		var c2=document.getElementById("zzc_content");
-		c2.style.width=document.documentElement.scrollWidth+"px";
-		c2.style.height=document.documentElement.scrollHeight+"px";
-		c2.style.display="block";
-		//window.location.href="adminmember?method=query&memid="+memid;
-	
-	}	
-	function closes(){
-		
-		var c1=document.getElementById("zzc_cover");
-		var c2=document.getElementById("zzc_content");
-			c1.style.display="none";
-		c2.style.display="none";
-	}
-	
-	
 	
 	 var layer,upload;
 	 $(function(){
@@ -305,6 +268,8 @@ function regs(e){
 	 done:function(res){
 	 layer.alert(res.message);
    $("#photo").val(res.message);
+  
+   
 	 }
 
 	 });

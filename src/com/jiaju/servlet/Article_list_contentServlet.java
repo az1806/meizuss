@@ -30,10 +30,7 @@ public class Article_list_contentServlet extends HttpServlet {
 		List <NewsType> nts=(List<NewsType>) nsdao.queryNewsTypes();
 				
 				request.setAttribute("newstype",nts);
-				
-				
-				
-				
+			
 				
 				/**
 				 *根据id来显示详情
@@ -43,12 +40,15 @@ public class Article_list_contentServlet extends HttpServlet {
 				     News news=ndao.queryNewsByID(newsid);
 				request.setAttribute("news", news);
 				
+				
+				
 				/**
 				 * 获取新闻列表
 				 */
 				
 				List<News> newslist=ndao.queryNewsDaowucan();
 				request.setAttribute("newslist", newslist);	
+				
 				
 				/**
 				 * 因为是根据typeid来查产品
@@ -71,8 +71,9 @@ public class Article_list_contentServlet extends HttpServlet {
 		      NewsDao newsdao=new NewsDaoImpl();
 				List<News> newslistid=newsdao.queryNewsDao(typeid);       
 				request.setAttribute("newslistid",newslistid);
-				
-				
+				/**
+				 * 获取下一条
+				 */
 				
 				
 				request.getRequestDispatcher("article_list_content.jsp").forward(request, response);

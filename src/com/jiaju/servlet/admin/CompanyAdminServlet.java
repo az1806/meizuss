@@ -28,18 +28,18 @@ public class CompanyAdminServlet extends BaseServlet {
 			throws ServletException, IOException {
 		  System.out.println("已到达修改公司信息的servlet");
   int id= Integer.parseInt(request.getParameter("id"));
-		String companyname = java.net.URLDecoder.decode(request.getParameter("companyname"), "utf-8");
-		String syjs = java.net.URLDecoder.decode(request.getParameter("syjs"), "utf-8");
-		String gyjs = java.net.URLDecoder.decode(request.getParameter("gyjs"), "utf-8");
-		String culture = java.net.URLDecoder.decode(request.getParameter("culture"), "utf-8");
-		String address = java.net.URLDecoder.decode(request.getParameter("address"), "utf-8");
-		String email = java.net.URLDecoder.decode(request.getParameter("email"), "utf-8");
-		String contact = java.net.URLDecoder.decode(request.getParameter("contact"), "utf-8");
-		String imgzong = java.net.URLDecoder.decode(request.getParameter("imgzong"), "utf-8");
-		String www = java.net.URLDecoder.decode(request.getParameter("www"), "utf-8");
-		
+		String companyname = request.getParameter("companyname");
+		String syjs = request.getParameter("syjs");
+		String gyjs = request.getParameter("gyjs");
+		String culture = request.getParameter("culture");
+		String address = request.getParameter("address");
+		String email = request.getParameter("email");
+		String contact = request.getParameter("contact");
+		String imgzong = request.getParameter("imgzong");
+		String www = request.getParameter("www");
+		String logo = request.getParameter("logo");
 		CompanyDao comdao=new CompanyDaoImpl();
-		int n=comdao.updateCompany(id, companyname, syjs, gyjs, culture, address, email, contact, imgzong, www);
+		int n=comdao.updateCompany(id, companyname, syjs, gyjs, culture, address, email, contact, imgzong, www,logo);
 		if(n>0){
 		  System.out.println("公司信息修改成功");
 			Company com=comdao.queryCompany();

@@ -396,12 +396,12 @@ List<ProductClass> pclist=(List<ProductClass> ) request.getAttribute("pclist");
 				<button type="button" class="layui-btn" id="test1">上传图片</button>
 				
 			</form>
-			
-			<!-- layUI 分页模块 -->
+				<!-- layUI 分页模块 -->
 			<div id="pages"></div>
+			
 			<script>
 			
-				layui.use('laypage', function() {
+			/*	layui.use('laypage', function() {
 					var laypage = layui.laypage;
 
 					//总页数大于页码总数
@@ -415,7 +415,7 @@ List<ProductClass> pclist=(List<ProductClass> ) request.getAttribute("pclist");
 							//					      console.log(obj)
 						}
 					});
-				});
+				}); */
 
 				//修改按钮
 				var updateFrame = null;

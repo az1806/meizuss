@@ -32,13 +32,7 @@ public class HouTai_MembersServlet extends HttpServlet {
 		MemberDao memdao=new MemberDaoImpl();
 		List<Member> memlist=memdao.queryMember();
 		request.setAttribute("memlist",memlist);
-		int memid;
-		if(request.getParameter("memid")!=null){
-			memid=Integer.parseInt(request.getParameter("memid"));
-			
-		}else{
-			memid=1;
-		}
+		
 		
 		
 			request.getRequestDispatcher("tgls/memberManage/memberlist.jsp").forward(request, response);

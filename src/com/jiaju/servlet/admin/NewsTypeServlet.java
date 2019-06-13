@@ -18,6 +18,7 @@ public class NewsTypeServlet extends BaseServlet {
 
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
       PrintWriter out=response.getWriter();
 		NewsTypeDao newstypedao=new NewsTypeDaoImpl();
 		Integer typeid=Integer.parseInt(request.getParameter("typeid"));
@@ -29,7 +30,6 @@ public class NewsTypeServlet extends BaseServlet {
 			out.println("<script>window.parent.location.reload()</script>");
 		
 		}  else{
-			
 			
 			System.out.println("新闻类别修改失败了兄弟");
 		}

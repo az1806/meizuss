@@ -99,9 +99,10 @@ alert("输入框不能为空");
 	//修改按钮
 	
 				var updateFrame = null;
-				function updateBut(e) {
-				  var typeid=e.getAttribute("data-id");
 				
+				function updateBut(e) {
+				
+				  var typeid=e.getAttribute("data-id");	
 					layui.use('layer', function() {
 						var layer = layui.layer;
 

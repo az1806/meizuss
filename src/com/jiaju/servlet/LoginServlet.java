@@ -44,13 +44,14 @@ if(mage.getUsername().equals(name)&&mage.getPwd().equals(pwd)){
 	out.print(Result.toClient(true,"你的到来，使我们蓬荜生辉"));
 }  else{ 
 	
-	
 	if(mage.getPwd().equals(pwd)==false){
 	out.print(Result.toClient(false,"再检查一下密码吧，可能输错了哦"));
 	
 }else if(mage.getUsername().equals(name)==false){
 	out.print(Result.toClient(false, "我们这没有这个用户名哦"));
 	
+}else{
+	out.print(Result.toClient(false, "也许你不是后台管理人员哦"));
 }
 
 

@@ -53,47 +53,9 @@ public class MemberAdminServlet extends BaseServlet {
 		out.print(Result.toClient(false, "Õº∆¨±£¥Ê ß∞‹"));
 		e.printStackTrace();
 	}
-	    
-	    
-	    
-	    
-	    
-	    
+	
 	    
 	}
-	
-	
-	
-	
-	public void query(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		MemberDao memberdao=new MemberDaoImpl();
-			List<Member> member=memberdao.queryMember();
-			request.setAttribute("memlist", member);
-			
-			int memid;
-			
-			if(request.getParameter("memid")!=null){
-				memid=Integer.parseInt(request.getParameter("memid"));
-				
-			}else
-			{memid=1;}
-		
-			
-			Member mem=memberdao.ObjMember(memid);
-			request.setAttribute("mem", mem);
-			
-		    PrintWriter out = response.getWriter();   
-			
-		System.out.println("ª∂”≠¿¥µΩadminmember");
-			
-			
-	
-	
-		
-	}
-	
 	
 	public void add(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

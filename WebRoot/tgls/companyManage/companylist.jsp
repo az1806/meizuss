@@ -117,17 +117,17 @@ width: 210px;
 				var contact = document.getElementById("contact").value;
 				var imgzong = document.getElementById("imgzong").value;
 				var www = document.getElementById("www").value;
-
+                 var logo = document.getElementById("logo").value;
 				window.location.href = "admincompany?method=update&id=" + id
-						+ "&companyname=" + encodeURI(encodeURI(companyname))
-						+ "&syjs=" + encodeURI(encodeURI(syjs)) + "&gyjs="
-						+ encodeURI(encodeURI(gyjs)) + "&culture="
-						+ encodeURI(encodeURI(culture)) + "&address="
-						+ encodeURI(encodeURI(address)) + "&email="
-						+ encodeURI(encodeURI(email)) + "&contact="
-						+ encodeURI(encodeURI(contact)) + "&imgzong="
-						+ encodeURI(encodeURI(imgzong)) + "&www="
-						+ encodeURI(encodeURI(www)) + "";
+						+ "&companyname=" + companyname
+						+ "&syjs=" + syjs + "&gyjs="
+						+ gyjs + "&culture="
+						+ culture + "&address="
+						+ address + "&email="
+						+ email + "&contact="
+						+ contact + "&imgzong="
+						+ imgzong + "&www="
+						+ www + "&logo="+logo+"";
 
 			}
 		</script>
@@ -176,8 +176,18 @@ width: 210px;
 			</tr>
 			<tr>
 				<td>联系方式</td>
-				<td><input value="  <%=com.getContact()%>" id="contact">
+				<td><input value="<%=com.getContact()%>" id="contact">
 				</td>
+			</tr>
+			<tr>
+				<td>公司logo</td>
+				<td><input value="<%=com.getLogo()%>" id="logo">
+		
+			<div style="border:1px solid black;" 
+			><img alt="" src="<%=com.getLogo()%>" width="200px"></div>
+				</td>
+				
+				
 			</tr>
 			<tr>
 				<td>公司图片</td>
@@ -191,7 +201,7 @@ width: 210px;
 			</tr>
 			<tr>
 				<td>网址</td>
-				<td><input value="  <%=com.getWww()%>" id="www"></td>
+				<td><input value="<%=com.getWww()%>" id="www"></td>
 			</tr>
 			<tr>
 				<td>操作</td>
